@@ -1,0 +1,54 @@
+package parser;
+
+import java.util.*;
+import java.io.*;
+import java_cup.runtime.Symbol;
+import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
+import java_cup.runtime.ComplexSymbolFactory;
+import interpreter.Interpreter;
+import ast.*;
+
+parser code {: 
+  Lexer lexer;
+  public Parser(Lexer lex, ComplexSymbolFactory sf) {
+    super(lex, sf);
+    lexer = lex;
+  }
+  public void report_fatal_error(String message, Object info) {
+    Interpreter.fatalError(message + " (" + info + ")", Interpreter.EXIT_PARSING_ERROR);
+  }
+  Location loc(int line, int column) {
+    return new Location(line, column);
+  }
+:};
+
+terminal INT, FLOAT, SEMICOLON, LPAREN, RPAREN, ASSIGN, PLUS;
+terminal Long    INTCONST;
+terminal Double  FLOATCONST;
+terminal String  IDENT;
+
+non terminal Program program;
+non terminal StmtList stmtList;
+non terminal Stmt stmt;
+non terminal VarDecl varDecl;
+non terminal Expr expr;
+precedence left PLUS;
+start with program;
+
+program ::= stmtList:sl {: RESULT = new Program(sl, loc(slleft, slright)); :}
+;
+stmtList ::= stmt:s {: RESULT = new StmtList(s,loc(sleft, sright)); :}
+           | stmt:s stmtList:sl {: RESULT = new StmtList(s, sl, loc(sleft, slright)); :} 
+;
+stmt ::= varDecl:d ASSIGN expr:e SEMICOLON {: RESULT = new DeclStmt(d, e, loc(dleft,eright)); :}
+       | IDENT:i ASSIGN expr:e SEMICOLON {: RESULT = new AssignStmt(i, e, loc(ileft,eright)); :}
+;
+varDecl ::= INT IDENT:i {: RESULT = new IntVarDecl(i, loc(ileft,iright)); :}
+          | FLOAT IDENT:i {: RESULT = new FloatVarDecl(i, loc(ileft,iright)); :}
+;
+expr ::= INTCONST:ic {: RESULT = new IntConstExpr(ic, loc(icleft,icright)); :}
+       | FLOATCONST:fc {: RESULT = new FloatConstExpr(fc, loc(fcleft,fcright)); :}
+       | IDENT:i {: RESULT = new IdentExpr(i, loc(ileft,iright)); :}
+       | expr:e1 PLUS expr:e2 {: RESULT = new PlusExpr(e1, e2, loc(e1left,e2right)); :}
+       | LPAREN expr:e RPAREN {: RESULT = new ParenExpr(e, loc(eleft,eright)); :}
+;
