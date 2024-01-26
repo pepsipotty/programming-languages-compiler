@@ -1,5 +1,6 @@
 package ast;
 import java.io.PrintStream;
+import interpreter.Interpreter;
 
 //Check the two child expressions and compare types 
 
@@ -9,6 +10,7 @@ public class PlusExpr extends Expr {
 	super(loc);
 	expr1 = e1; 
 	expr2 = e2;
+	typeCheck();
     }
     public void print(PrintStream ps) {
 	ps.print("(");
@@ -17,4 +19,18 @@ public class PlusExpr extends Expr {
 	expr2.print(ps);
 	ps.print(")");
     }
+
+	private void typeCheck() {
+		System.out.println("In PlusExpr");
+		if (expr1.type != expr2.type) {
+			Interpreter.fatalError("Error - Plus operand type mismatch: " + 
+			expr1.value + "(" + expr1.type + ")"+
+			" and " + 
+			expr2.value + "(" + expr2.type + ")",
+			2);
+		} else {
+			type = expr1.type;
+			value = "(" + expr1.value + " + " + expr2.value + ")";
+		}
+	}
 }

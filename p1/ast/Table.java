@@ -2,13 +2,11 @@ package ast;
 import java.util.*;
 public class Table {
     private static Table instance = null;
-    private static int counter;
-    private HashMap<String, Wrapper> table;
+    private HashMap<String, String> table;
 
 
     private Table() {
         table = new HashMap<>();
-        counter = 0;
     }
 
     public static Table getInstance() {
@@ -18,12 +16,12 @@ public class Table {
         return instance;
     }
 
-    public void add(String identifier, Wrapper type) {
+    public void add(String identifier, String type) {
         table.put(identifier, type);
     }
     
 
-    public Wrapper get(String name) {
+    public String get(String name) {
         return table.get(name);
     }
 
@@ -31,11 +29,14 @@ public class Table {
         return table.containsKey(name);
     }
 
-    public void incrementCounter() {
-        counter = counter + 1;
+    public void getEntries() {
+        //for debugging purposes
+        int index = 1;
+        for (Map.Entry<String, String> entry : table.entrySet()) {
+            System.out.println(index + ". " + entry.getKey() + " | " + entry.getValue());
+            index++;
+        }
+        System.out.println("------------------");
     }
 
-    public int getCounter() {
-        return counter;
-    }
 }
