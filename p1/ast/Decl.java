@@ -33,7 +33,7 @@ public class Decl extends Unit {
     
     }
 
-	public void typeCheck() {
+	private void typeCheck() {
 		if (!varDecl.type.equals(expr.type)) {
 			Interpreter.fatalError("Error - Declaration of left " + varDecl.ident + "(" + varDecl.type + ")" + " variable must be of the same type as variable on the right " + expr.value + "(" + expr.type + ")", 2);
 		}

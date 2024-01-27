@@ -6,6 +6,7 @@ public class IntConstExpr extends Expr {
     public IntConstExpr(Long i, Location loc) {
 	super(loc);
 	ival = i;
+    
     type = Type.INT.getValue();
     value = ival.toString();
     }

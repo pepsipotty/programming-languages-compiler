@@ -3,9 +3,8 @@ import java.io.PrintStream;
 
 //Type to store expression
 public abstract class Expr extends ASTNode {
-    public String type;
-    public String value;
-    public String identType;
+    protected String type;
+    protected String value;
     public Expr(Location loc) {
 	super(loc);
     }

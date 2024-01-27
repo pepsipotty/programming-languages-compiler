@@ -10,6 +10,9 @@ public class PlusExpr extends Expr {
 	super(loc);
 	expr1 = e1; 
 	expr2 = e2;
+
+	type = expr1.type;
+	value = "(" + expr1.value + " + " + expr2.value + ")";
 	typeCheck();
     }
     public void print(PrintStream ps) {
@@ -27,9 +30,6 @@ public class PlusExpr extends Expr {
 			" and " + 
 			expr2.value + "(" + expr2.type + ")",
 			2);
-		} else {
-			type = expr1.type;
-			value = "(" + expr1.value + " + " + expr2.value + ")";
-		}
+		} 
 	}
 }

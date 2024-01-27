@@ -9,7 +9,9 @@ public class IdentExpr extends Expr {
 	super(loc);
     // System.out.println("Enter IdentExpr");
 	ident = i;
+
     value = ident;
+    type = table.get(ident);
     typeCheck(); // <-- EXPERIMENTAL ADDITION HERE
     }
 
@@ -19,20 +21,9 @@ public class IdentExpr extends Expr {
 
     private void typeCheck() {
         // table.getEntries();
-        if (table.isDeclared(ident)) {
-            setType();
-        } else {
+        if (!table.isDeclared(ident)) {
             Interpreter.fatalError("Error - Variable must be declared before use: " + ident, 2);
         }
 	}
-
-    private void setType() {
-        type = table.get(ident);
-    }
-
-    public String getIdent() {
-        return ident;
-    }
-
 
 }

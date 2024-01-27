@@ -6,7 +6,6 @@ import interpreter.Interpreter;
 public class AssignStmt extends Stmt {
     public final String ident;
     public final Expr expr;
-    private String identifier;
     public AssignStmt(String i, Expr e, Location loc) {    
 	super(loc);
     ident = i;
@@ -20,7 +19,7 @@ public class AssignStmt extends Stmt {
 	ps.print(";");
     }
 
-    public void typeCheck() {
+    private void typeCheck() {
         // check if is declared before
         if (table.isDeclared(ident)) {
         // if declared, go ahead and check if both sides of the expression are of the same type
