@@ -1,5 +1,12 @@
 #!/opt/homebrew/bin/bash
-TEST_DIR="./tests"
+
+if [[ $(make --dry-run -s) ]]
+then
+  echo "make thinks the interpreter is out of date and needs to be re-built"
+  exit 1
+fi
+
+TEST_DIR="./🧪🧪🧪🧪🧪🧪"
 
 EXPECTED_OUTCOMES_FILE="expectedResults.txt"
 

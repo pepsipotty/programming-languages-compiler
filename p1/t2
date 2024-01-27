@@ -1,5 +1,1 @@
-int x = 1; 
-int z = 4;
-float y = x + (z+6); 
-
-
+int x = x+1; 
