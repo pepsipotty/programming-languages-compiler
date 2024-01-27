@@ -6,7 +6,7 @@ EXPECTED_OUTCOMES_FILE="expected_results.txt"
 passed_count=0
 failed_count=0
 
-declare -A expected_outcomes
+declare expected_outcomes
 while IFS=' ' read -r filename outcome
 do
     expected_outcomes["$filename"]="$outcome"
