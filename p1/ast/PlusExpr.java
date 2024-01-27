@@ -21,8 +21,7 @@ public class PlusExpr extends Expr {
     }
 
 	private void typeCheck() {
-		System.out.println("In PlusExpr");
-		if (expr1.type != expr2.type) {
+		if (!expr1.type.equals(expr2.type)) {
 			Interpreter.fatalError("Error - Plus operand type mismatch: " + 
 			expr1.value + "(" + expr1.type + ")"+
 			" and " + 

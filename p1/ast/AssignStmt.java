@@ -9,10 +9,8 @@ public class AssignStmt extends Stmt {
     private String identifier;
     public AssignStmt(String i, Expr e, Location loc) {    
 	super(loc);
-    System.out.println("Enter AssignStmt");
     ident = i;
     expr = e;
-    // this.identifier = ident;
     typeCheck();
     }
 
@@ -23,14 +21,12 @@ public class AssignStmt extends Stmt {
     }
 
     public void typeCheck() {
-        Table table = Table.getInstance();
         // check if is declared before
         if (table.isDeclared(ident)) {
         // if declared, go ahead and check if both sides of the expression are of the same type
             if (!table.get(ident).equals(expr.type)) {
                 Interpreter.fatalError("Error - Assignment of left " + ident + "(" + table.get(ident) + ")" + " variable must be of the same type as variable on the right " + expr.value + "(" + expr.type + ")", 2);
             }
-
 
         } else {
                 Interpreter.fatalError("Error - Variable " + ident + " must be declared before assignment", 2);

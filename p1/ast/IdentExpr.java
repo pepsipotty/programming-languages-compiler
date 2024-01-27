@@ -7,7 +7,7 @@ public class IdentExpr extends Expr {
     public final String ident; 
     public IdentExpr(String i, Location loc) {
 	super(loc);
-    System.out.println("Enter IdentExpr");
+    // System.out.println("Enter IdentExpr");
 	ident = i;
     value = ident;
     typeCheck(); // <-- EXPERIMENTAL ADDITION HERE
@@ -18,7 +18,7 @@ public class IdentExpr extends Expr {
     }
 
     private void typeCheck() {
-        table.getEntries();
+        // table.getEntries();
         if (table.isDeclared(ident)) {
             setType();
         } else {
