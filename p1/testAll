@@ -1,7 +1,7 @@
 
 TEST_DIR="./tests"
 
-EXPECTED_OUTCOMES_FILE="expected_results"
+EXPECTED_OUTCOMES_FILE="expected_results.txt"
 
 passed_count=0
 failed_count=0
@@ -18,16 +18,16 @@ do
     filename=$(basename "$test_file")
 
 
-    ./plan "$test_file" > /dev/null 2>&1
+    ./plan_modified "$test_file" > /dev/null 2>&1
     result=$?
 
     expected_result=${expected_outcomes["$filename"]}
 
     if [ "$result" -eq "$expected_result" ]; then
-        echo "✅ Test passed for file: $filename (Expected: $expected_result, Actual: $result)"
+        echo "🟢 Test passed for file: $filename (Expected: $expected_result, Actual: $result)"
         ((passed_count++))
     else
-        echo "❌ Test failed for file: $filename (Expected: $expected_result, Actual: $result)"
+        echo "🔴 Test failed for file: $filename (Expected: $expected_result, Actual: $result)"
         ((failed_count++))
     fi
 done
