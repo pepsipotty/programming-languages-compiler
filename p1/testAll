@@ -1,4 +1,4 @@
-
+#!/opt/homebrew/bin/bash
 TEST_DIR="./tests"
 
 EXPECTED_OUTCOMES_FILE="expected_results.txt"
@@ -6,7 +6,7 @@ EXPECTED_OUTCOMES_FILE="expected_results.txt"
 passed_count=0
 failed_count=0
 
-declare expected_outcomes
+declare -A expected_outcomes
 while IFS=' ' read -r filename outcome
 do
     expected_outcomes["$filename"]="$outcome"
