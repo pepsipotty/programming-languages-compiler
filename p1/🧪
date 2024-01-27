@@ -1,0 +1,40 @@
+
+TEST_DIR="./tests"
+
+EXPECTED_OUTCOMES_FILE="expected_results.txt"
+
+passed_count=0
+failed_count=0
+
+declare -A expected_outcomes
+while IFS=' ' read -r filename outcome
+do
+    expected_outcomes["$filename"]="$outcome"
+done < "$EXPECTED_OUTCOMES_FILE"
+
+for test_file in "$TEST_DIR"/*
+do
+
+    filename=$(basename "$test_file")
+
+
+    ./plan_modified "$test_file" > /dev/null 2>&1
+    result=$?
+
+    expected_result=${expected_outcomes["$filename"]}
+
+    if [ "$result" -eq "$expected_result" ]; then
+        echo "🟢 Test passed for file: $filename (Expected: $expected_result, Actual: $result)"
+        ((passed_count++))
+    else
+        echo "🔴 Test failed for file: $filename (Expected: $expected_result, Actual: $result)"
+        ((failed_count++))
+    fi
+done
+
+echo "--------------------------------"
+echo " Results "
+echo "--------------------------------"
+echo "Total Tests Run: $((passed_count + failed_count))"
+echo "Passed: $passed_count"
+echo "Failed: $failed_count"
