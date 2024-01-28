@@ -1,0 +1,47 @@
+#!/opt/homebrew/bin/bash
+
+if [[ $(make --dry-run -s) ]]
+then
+  echo "make thinks the interpreter is out of date and needs to be re-built"
+  exit 1
+fi
+
+TEST_DIR="./🧪🧪🧪🧪🧪🧪"
+
+EXPECTED_OUTCOMES_FILE="expectedResults.txt"
+
+passedCount=0
+failedCount=0
+
+declare -A expectedResults
+while IFS=' ' read -r filename outcome
+do
+    expectedResults["$filename"]="$outcome"
+done < "$EXPECTED_OUTCOMES_FILE"
+
+for test_file in "$TEST_DIR"/*
+do
+
+    filename=$(basename "$test_file")
+
+
+    ./planModified "$test_file" > /dev/null 2>&1
+    result=$?
+
+    expectedResult=${expectedResults["$filename"]}
+
+    if [ "$result" -eq "$expectedResult" ]; then
+        echo "🟢 Test passed for file: $filename (Expected: $expectedResult, Actual: $result)"
+        ((passedCount++))
+    else
+        echo "🔴 Test failed for file: $filename (Expected: $expectedResult, Actual: $result)"
+        ((failedCount++))
+    fi
+done
+
+echo "--------------------------------"
+echo " Results "
+echo "--------------------------------"
+echo "Total Tests Run: $((passedCount + failedCount))"
+echo "Passed: $passedCount"
+echo "Failed: $failedCount"
