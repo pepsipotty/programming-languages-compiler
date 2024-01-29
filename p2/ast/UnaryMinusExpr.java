@@ -6,6 +6,8 @@ public class UnaryMinusExpr extends Expr {
     public UnaryMinusExpr(Expr e, Location loc) {
 	super(loc);
 	expr = e; 
+    value = "-" + expr.value;
+    type = expr.type;
     }
     public void print(PrintStream ps) {
 	ps.print("-(");

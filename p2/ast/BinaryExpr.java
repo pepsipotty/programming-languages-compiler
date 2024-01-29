@@ -1,6 +1,8 @@
 package ast;
 import java.io.PrintStream;
 
+import interpreter.Interpreter;
+
 public class BinaryExpr extends Expr {
     public static final int PLUS = 1;
     public static final int MINUS = 2;
@@ -13,6 +15,7 @@ public class BinaryExpr extends Expr {
 	expr1 = e1; 
 	expr2 = e2;
 	op = oper;
+	typeCheck();
     }
     public void print(PrintStream ps) {
 	ps.print("(");
@@ -26,4 +29,16 @@ public class BinaryExpr extends Expr {
 	expr2.print(ps);
 	ps.print(")");
     }
+
+	public void typeCheck() {
+		if (!expr1.type.equals(expr2.type)) {
+			Interpreter.fatalError("Error - Binary expression type mismatch: " + 
+			expr1.value + "(" + expr1.type + ")"+
+			" and " + 
+			expr2.value + "(" + expr2.type + ")",
+			2);
+		} else {
+			type = expr1.type;
+		}
+	}
 }

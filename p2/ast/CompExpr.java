@@ -1,6 +1,8 @@
 package ast;
 import java.io.PrintStream;
 
+import interpreter.Interpreter;
+
 public class CompExpr extends CondExpr {
     public static final int GE = 1;
     public static final int GT = 2;
@@ -15,6 +17,7 @@ public class CompExpr extends CondExpr {
 	expr1 = e1; 
 	expr2 = e2;
 	op = oper;
+	typeCheck();
     }
     public void print(PrintStream ps) {
 	ps.print("(");
@@ -30,4 +33,14 @@ public class CompExpr extends CondExpr {
 	expr2.print(ps);
 	ps.print(")");
     }
+
+	public void typeCheck() {
+		if (!expr1.type.equals(expr2.type)) {
+			Interpreter.fatalError("Error - Comparison expression type mismatch: " + 
+			expr1.value + "(" + expr1.type + ")"+
+			" and " + 
+			expr2.value + "(" + expr2.type + ")",
+			2);
+		}
+	}
 }
