@@ -1,1 +1,1 @@
-int x; y = x+1;
+{ int z = 1; { int j; } int z = 2; }

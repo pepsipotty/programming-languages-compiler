@@ -1,1 +1,0 @@
-float k; float y; float z = y + k;

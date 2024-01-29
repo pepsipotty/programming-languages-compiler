@@ -1,1 +1,0 @@
-float x; float y = x + 1.88;

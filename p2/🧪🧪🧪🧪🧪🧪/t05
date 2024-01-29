@@ -1,1 +1,1 @@
-int x; float y = 1.; x = 3.14 + y; 
+int z; { float z = 2.00; { int z = 1; } }
