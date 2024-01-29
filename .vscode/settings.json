@@ -31,7 +31,9 @@
         "p2/ast/Unit.class": true,
         "p2/ast/UnitList.class": true,
         "p2/ast/VarDecl.class": true,
-        "p2/ast/WhileStmt.class": true
+        "p2/ast/WhileStmt.class": true,
+        "p2/ast/Type.class": true,
+        "p2/ast/Table.class": true
     },
     "hide-files.files": [
         "p2/ast/AssignStmt.class",
@@ -59,6 +61,8 @@
         "p2/ast/Unit.class",
         "p2/ast/UnitList.class",
         "p2/ast/VarDecl.class",
-        "p2/ast/WhileStmt.class"
+        "p2/ast/WhileStmt.class",
+        "p2/ast/Type.class",
+        "p2/ast/Table.class"
     ]
 }
