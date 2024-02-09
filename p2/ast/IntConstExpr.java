@@ -6,12 +6,14 @@ public class IntConstExpr extends Expr {
     public IntConstExpr(Long i, Location loc) {
 	super(loc);
 	ival = i;
-    System.out.println("Enter IntConstExpr for " + i);
-
     type = Type.INT.getValue();
     value = ival.toString();
     }
     public void print(PrintStream ps) {
 	ps.print(ival);
+    }
+
+    public void check(TableObj t){
+        // Do nothing
     }
 }

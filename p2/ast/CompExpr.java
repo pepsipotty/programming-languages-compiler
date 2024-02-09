@@ -17,7 +17,6 @@ public class CompExpr extends CondExpr {
 	expr1 = e1; 
 	expr2 = e2;
 	op = oper;
-	typeCheck();
     }
     public void print(PrintStream ps) {
 	ps.print("(");
@@ -34,7 +33,9 @@ public class CompExpr extends CondExpr {
 	ps.print(")");
     }
 
-	public void typeCheck() {
+	public void check(TableObj table) {
+		expr1.check(table);
+		expr2.check(table);
 		if (!expr1.type.equals(expr2.type)) {
 			Interpreter.fatalError("Error - Comparison expression type mismatch: " + 
 			expr1.value + "(" + expr1.type + ")"+

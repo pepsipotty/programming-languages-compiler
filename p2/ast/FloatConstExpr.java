@@ -6,12 +6,14 @@ public class FloatConstExpr extends Expr {
     public FloatConstExpr(Double f, Location loc) {
 	super(loc);
 	fval = f;
-    System.out.println("Enter FloatConstExpr for " + fval);
-
     type = Type.FLOAT.getValue();
     value = fval.toString();
     }
     public void print(PrintStream ps) {
 	ps.print(fval);
+    }
+
+    public void check(TableObj t){
+        // Do nothing
     }
 }

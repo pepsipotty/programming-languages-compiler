@@ -9,17 +9,12 @@ public class Decl extends Unit {
 	super(loc);
 	varDecl = d;
 	expr = null;
-	updateTable();
     }
+
     public Decl(VarDecl d, Expr e, Location loc) {
 	super(loc);
 	varDecl = d;
 	expr = e;
-	System.out.println("Enter Decl");
-	typeCheck();
-	System.out.println("Exit Decl");
-	updateTable();
-
     }
     public void print(PrintStream ps, String indent) { 
 	ps.print(indent);
@@ -35,13 +30,27 @@ public class Decl extends Unit {
     }
 
 	private void typeCheck() {
-		if (!varDecl.type.equals(expr.type)) {
-			Interpreter.fatalError("Error - Declaration of left " + varDecl.ident + "(" + varDecl.type + ")" + " variable must be of the same type as variable on the right " + expr.value + "(" + expr.type + ")", 2);
+		if (expr != null) {
+			if (!varDecl.type.equals(expr.type)) {
+				Interpreter.fatalError("Error - Declaration of left " + varDecl.ident + "(" + varDecl.type + ")" + " variable must be of the same type as variable on the right " + expr.value + "(" + expr.type + ")", 2);
+			}
 		}
 	}
 
-	private void updateTable() {
+	private void updateTable(TableObj table) {
+		System.out.println("Updating table for " + varDecl.value);
 		table.add(varDecl.value, varDecl.type);
+	}
+
+	public void check(TableObj t) {
+		varDecl.check(t);
+		if (expr != null) {
+			expr.check(t);
+		};
+		typeCheck();
+		// System.out.println("Updating table for " + varDecl.value);
+		updateTable(t);
+
 	}
 
 	

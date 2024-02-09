@@ -29,4 +29,13 @@ public class IfStmt extends Stmt {
     public void print(PrintStream ps) {     
 	print(ps,"");
     }
+
+	public void check(TableObj t){
+		// System.out.println("Table parent is null: " + (t.getParent() == null));
+		expr.check(t);
+		thenstmt.check(t);
+		if (elsestmt != null) {
+			elsestmt.check(t);
+		}
+	}
 }

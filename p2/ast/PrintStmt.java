@@ -15,4 +15,8 @@ public class PrintStmt extends Stmt {
     public void print(PrintStream ps) { 
 	print(ps,"");
     }
+
+    public void check(TableObj t){
+       //do nothing
+    }
 }

@@ -9,14 +9,14 @@ public class FloatVarDecl extends VarDecl {
 
     value = i;
     type = Type.FLOAT.getValue();
-    typeCheck();
     System.out.println("Enter FloatVarDecl for " + i);
     }
     public void print(PrintStream ps) {
 	ps.print("float " + ident);
     }
 
-    private void typeCheck() {
+    public void check(TableObj table) {
+        // table.getEntries();
         if (table.isDeclared(value)) {
             Interpreter.fatalError("Error - Variable cannot be declared twice: " + value, 2);
         }

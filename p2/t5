@@ -1,0 +1,1 @@
+int z; {int y; {int x; { x = z;}}}

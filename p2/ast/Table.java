@@ -2,10 +2,11 @@ package ast;
 import java.util.*;
 public class Table {
     private static Table instance = null;
+    public Table parent = null;
     private HashMap<String, String> table;
 
 
-    private Table() {
+    public Table() {
         table = new HashMap<>();
     }
 

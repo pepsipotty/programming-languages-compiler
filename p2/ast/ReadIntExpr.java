@@ -10,4 +10,8 @@ public class ReadIntExpr extends Expr {
     public void print(PrintStream ps) {
 	ps.print("readint");
     }
+
+    public void check(TableObj t){
+        // Do nothing
+    }
 }

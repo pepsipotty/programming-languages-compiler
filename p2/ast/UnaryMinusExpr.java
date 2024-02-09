@@ -14,4 +14,8 @@ public class UnaryMinusExpr extends Expr {
 	expr.print(ps);
 	ps.print(")");
     }
+
+    public void check(TableObj t){
+        expr.check(t);
+    }
 }

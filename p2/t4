@@ -1,0 +1,1 @@
+int x; int y; int z; x = readfloat; y = readfloat; z = x + y;

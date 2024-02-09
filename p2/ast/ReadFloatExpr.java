@@ -9,4 +9,8 @@ public class ReadFloatExpr extends Expr {
     public void print(PrintStream ps) {
 	ps.print("readfloat");
     }
+
+    public void check(TableObj t){
+        // Do nothing
+    }
 }

@@ -10,4 +10,5 @@ public abstract class VarDecl extends ASTNode {
 	ident = i;
     }
     public abstract void print(PrintStream ps);
+    public abstract void check(TableObj t);
 }

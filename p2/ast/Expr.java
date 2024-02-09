@@ -7,4 +7,5 @@ public abstract class Expr extends ASTNode {
     public Expr(Location loc) {
 	super(loc);
     }
+    public abstract void check(TableObj t);
 }

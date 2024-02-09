@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 abstract class ASTNode {
     public final Location loc;
-    Table table = Table.getInstance();
+    // Table table = Table.getInstance();
     ASTNode(Location loc) { this.loc = loc; }
     public abstract void print(PrintStream ps);
     public String toString() { 

@@ -15,8 +15,8 @@ public class BinaryExpr extends Expr {
 	expr1 = e1; 
 	expr2 = e2;
 	op = oper;
-	typeCheck();
     }
+
     public void print(PrintStream ps) {
 	ps.print("(");
 	expr1.print(ps);
@@ -30,7 +30,10 @@ public class BinaryExpr extends Expr {
 	ps.print(")");
     }
 
-	public void typeCheck() {
+	public void check(TableObj table) {
+		expr1.check(table);
+		expr2.check(table);
+
 		if (!expr1.type.equals(expr2.type)) {
 			Interpreter.fatalError("Error - Binary expression type mismatch: " + 
 			expr1.value + "(" + expr1.type + ")"+

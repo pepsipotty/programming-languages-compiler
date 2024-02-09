@@ -18,4 +18,8 @@ public class WhileStmt extends Stmt {
     public void print(PrintStream ps) {     
 	print(ps,"");
     }
+
+    public void check(TableObj t){
+        
+    }
 }
