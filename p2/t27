@@ -1,0 +1,1 @@
+int x = readint; int y = readint; if (x != y) x = 3; else y = 2;

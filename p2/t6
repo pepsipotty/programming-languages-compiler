@@ -1,1 +1,1 @@
-int z = 1; { { int z = 3; } { float w = z + 1.1; } }
+int z = 1; { float z = 2.00; { int z = 3; } { float w = z + 1.1; } }

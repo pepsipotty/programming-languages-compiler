@@ -28,7 +28,7 @@ public class AssignStmt extends Stmt {
         }
 
         if (current == null) {
-            Interpreter.fatalError("Error - SHAKE Variable must be declared before use: " + ident, 2);
+            Interpreter.fatalError("Error - Variable must be declared before use: " + ident, 2);
         } else {
 
             if (current.get(ident) != expr.type) {
