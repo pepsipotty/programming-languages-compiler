@@ -7,7 +7,7 @@ elif [ "$1" = "p2" ]; then
     TEST_DIR="./p2_testcases"
     EXPECTED_OUTCOMES_FILE="expectedResults_p2.txt"
 else
-    echo "Invalid parameter. Please use 'p1' or 'p2'."
+    echo "Paramater not defined. Gimmie parameter plz(p1 or p2)"
     exit 1
 fi
 

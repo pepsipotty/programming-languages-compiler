@@ -20,6 +20,6 @@ public class WhileStmt extends Stmt {
     }
 
     public void check(TableObj t){
-        
+        expr.check(t);
     }
 }

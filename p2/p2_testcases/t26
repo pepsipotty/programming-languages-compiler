@@ -1,0 +1,1 @@
+int x = readint; float y = readfloat; if (x != y) x = 3; else y = 2.0;

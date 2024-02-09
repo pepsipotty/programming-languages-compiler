@@ -38,7 +38,7 @@ public class Decl extends Unit {
 	}
 
 	private void updateTable(TableObj table) {
-		System.out.println("Updating table for " + varDecl.value);
+		// System.out.println("Updating table for " + varDecl.value);
 		table.add(varDecl.value, varDecl.type);
 	}
 

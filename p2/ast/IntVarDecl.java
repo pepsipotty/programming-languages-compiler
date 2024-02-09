@@ -7,7 +7,7 @@ public class IntVarDecl extends VarDecl {
 	super(i,loc);
     value = i;
     type = Type.INT.getValue();
-    System.out.println("Enter IntVarDecl for " + i);
+    // System.out.println("Enter IntVarDecl for " + i);
     }
     public void print(PrintStream ps) {
 	ps.print("int " + ident);

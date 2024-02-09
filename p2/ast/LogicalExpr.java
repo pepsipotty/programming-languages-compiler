@@ -32,4 +32,9 @@ public class LogicalExpr extends CondExpr {
 	expr2.print(ps);
 	ps.print(")");
     }
+
+	public void check(TableObj table) {
+		expr1.check(table);
+		expr2.check(table);
+	}
 }

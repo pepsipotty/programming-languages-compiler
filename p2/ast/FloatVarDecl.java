@@ -9,7 +9,7 @@ public class FloatVarDecl extends VarDecl {
 
     value = i;
     type = Type.FLOAT.getValue();
-    System.out.println("Enter FloatVarDecl for " + i);
+    // System.out.println("Enter FloatVarDecl for " + i);
     }
     public void print(PrintStream ps) {
 	ps.print("float " + ident);

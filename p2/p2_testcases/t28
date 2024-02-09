@@ -1,0 +1,1 @@
+int x; int y; int z; int j; if((x < y) && (z > j)) x = 3; else y = 2;
