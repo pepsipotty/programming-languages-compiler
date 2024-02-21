@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/bash
+
 #LEEEEEROOOYYY JENKINSSSSS
 if [ "$1" = "p1" ]; then
     TEST_DIR="./p1_testcases"
