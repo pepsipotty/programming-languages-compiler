@@ -10,11 +10,6 @@ public class CompExpr extends CondExpr {
     public static final int NE = 6;
     public final Expr expr1, expr2;
     public final int op;
-	public enum NumberType {
-		INTEGER,
-		FLOAT,
-		OTHER
-	}
 
     public CompExpr(Expr e1, int oper, Expr e2, Location loc) {
 	super(loc);
@@ -38,69 +33,63 @@ public class CompExpr extends CondExpr {
     }
 
 	public boolean evaluate() {
-        NumberType type = numberType(expr1);
+        // NumberType type = numberType(expr1);
+		Number expr1Value = expr1.evaluate(); // 1
+		Number expr2Value = expr2.evaluate(); // 2
+		boolean typeIsLong = expr1Value instanceof Long ? true : false; //true is integer, false is float
+		boolean typeIsDouble = !typeIsLong;
 		boolean value = false;
 		switch (op) {
 			case GE: 
-			if (type == NumberType.INTEGER) {
-				value = expr1.evaluate().longValue() >= expr2.evaluate().longValue();
+			if (typeIsLong) {
+				value = expr1Value.longValue() >= expr2Value.longValue();
 				break;
-			} else if (type == NumberType.FLOAT) {
-				value = expr1.evaluate().doubleValue() >= expr2.evaluate().doubleValue();
+			} else if (typeIsDouble) {
+				value = expr1Value.doubleValue() >= expr2Value.doubleValue();
 				break;
 			}
 			case GT:
-			if (type == NumberType.INTEGER) {
-				value = expr1.evaluate().longValue() > expr2.evaluate().longValue();
+			if (typeIsLong) {
+				value = expr1Value.longValue() > expr2Value.longValue();
 				break;
-			} else if (type == NumberType.FLOAT) {
-				value = expr1.evaluate().doubleValue() > expr2.evaluate().doubleValue();
+			} else if (typeIsDouble) {
+				value = expr1Value.doubleValue() > expr2Value.doubleValue();
 				break;
 			}
 			case LE:
-			if (type == NumberType.INTEGER) {
-				value = expr1.evaluate().longValue() <= expr2.evaluate().longValue();
+			if (typeIsLong) {
+				value = expr1Value.longValue() <= expr2Value.longValue();
 				break;
-			} else if (type == NumberType.FLOAT) {
-				value = expr1.evaluate().doubleValue() <= expr2.evaluate().doubleValue();
+			} else if (typeIsDouble) {
+				value = expr1Value.doubleValue() <= expr2Value.doubleValue();
 				break;
 			}
 			case LT:
-			if (type == NumberType.INTEGER) {
-				value = expr1.evaluate().longValue() < expr2.evaluate().longValue();
+			if (typeIsLong) {
+				value = expr1Value.longValue() < expr2Value.longValue();
 				break;
-			} else if (type == NumberType.FLOAT) {
-				value = expr1.evaluate().doubleValue() < expr2.evaluate().doubleValue();
+			} else if (typeIsDouble) {
+				value = expr1Value.doubleValue() < expr2Value.doubleValue();
 				break;
 			}
 			case EQ:
-			if (type == NumberType.INTEGER) {
-				value = expr1.evaluate().longValue() == expr2.evaluate().longValue();
+			if (typeIsLong) {
+				value = expr1Value.longValue() == expr2Value.longValue();
 				break;
-			} else if (type == NumberType.FLOAT) {
-				value = expr1.evaluate().doubleValue() == expr2.evaluate().doubleValue();
+			} else if (typeIsDouble) {
+				value = expr1Value.doubleValue() == expr2Value.doubleValue();
 				break;
 			}
 			case NE:
-			if (type == NumberType.INTEGER) {
-				value = expr1.evaluate().longValue() != expr2.evaluate().longValue();
+			if (typeIsLong) {
+				value = expr1Value.longValue() != expr2Value.longValue();
 				break;
-			} else if (type == NumberType.FLOAT) {
-				value = expr1.evaluate().doubleValue() != expr2.evaluate().doubleValue();
+			} else if (typeIsDouble) {
+				value = expr1Value.doubleValue() != expr2Value.doubleValue();
 				break;
 			}
 		}
 		return value;
     }
-	
-	public NumberType numberType(Expr expr) {
-		Number result = expr.evaluate();
-		if (result instanceof Double) {
-			return NumberType.FLOAT;
-		} else if (result instanceof Long) {
-			return NumberType.INTEGER;
-		} else {
-			return NumberType.OTHER;
-		}
-	}
+
 }
