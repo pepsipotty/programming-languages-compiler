@@ -10,11 +10,11 @@ public class BinaryExpr extends Expr {
     public static final int DIV = 4;
     public final Expr expr1, expr2;
     public final int op;
-	public enum NumberType {
-		INTEGER,
-		FLOAT,
-		OTHER
-	}
+	// public enum NumberType {
+	// 	INTEGER,
+	// 	FLOAT,
+	// 	OTHER
+	// }
 
     public BinaryExpr(Expr e1, int oper, Expr e2, Location loc) {
 	super(loc);
