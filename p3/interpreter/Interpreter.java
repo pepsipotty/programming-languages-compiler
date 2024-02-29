@@ -29,7 +29,7 @@ public class Interpreter {
             Interpreter.fatalError("Uncaught parsing error: " + ex, Interpreter.EXIT_PARSING_ERROR);
         }
 	// for debugging
-	astRoot.print(System.out);
+	// astRoot.print(System.out);
     }
     public static void fatalError(String message, int processReturnCode) {
         System.out.println(message);

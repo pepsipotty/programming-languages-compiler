@@ -10,6 +10,12 @@ public class CompExpr extends CondExpr {
     public static final int NE = 6;
     public final Expr expr1, expr2;
     public final int op;
+	public enum NumberType {
+		INTEGER,
+		FLOAT,
+		OTHER
+	}
+
     public CompExpr(Expr e1, int oper, Expr e2, Location loc) {
 	super(loc);
 	expr1 = e1; 
@@ -30,4 +36,71 @@ public class CompExpr extends CondExpr {
 	expr2.print(ps);
 	ps.print(")");
     }
+
+	public boolean evaluate() {
+        NumberType type = numberType(expr1);
+		boolean value = false;
+		switch (op) {
+			case GE: 
+			if (type == NumberType.INTEGER) {
+				value = expr1.evaluate().longValue() >= expr2.evaluate().longValue();
+				break;
+			} else if (type == NumberType.FLOAT) {
+				value = expr1.evaluate().doubleValue() >= expr2.evaluate().doubleValue();
+				break;
+			}
+			case GT:
+			if (type == NumberType.INTEGER) {
+				value = expr1.evaluate().longValue() > expr2.evaluate().longValue();
+				break;
+			} else if (type == NumberType.FLOAT) {
+				value = expr1.evaluate().doubleValue() > expr2.evaluate().doubleValue();
+				break;
+			}
+			case LE:
+			if (type == NumberType.INTEGER) {
+				value = expr1.evaluate().longValue() <= expr2.evaluate().longValue();
+				break;
+			} else if (type == NumberType.FLOAT) {
+				value = expr1.evaluate().doubleValue() <= expr2.evaluate().doubleValue();
+				break;
+			}
+			case LT:
+			if (type == NumberType.INTEGER) {
+				value = expr1.evaluate().longValue() < expr2.evaluate().longValue();
+				break;
+			} else if (type == NumberType.FLOAT) {
+				value = expr1.evaluate().doubleValue() < expr2.evaluate().doubleValue();
+				break;
+			}
+			case EQ:
+			if (type == NumberType.INTEGER) {
+				value = expr1.evaluate().longValue() == expr2.evaluate().longValue();
+				break;
+			} else if (type == NumberType.FLOAT) {
+				value = expr1.evaluate().doubleValue() == expr2.evaluate().doubleValue();
+				break;
+			}
+			case NE:
+			if (type == NumberType.INTEGER) {
+				value = expr1.evaluate().longValue() != expr2.evaluate().longValue();
+				break;
+			} else if (type == NumberType.FLOAT) {
+				value = expr1.evaluate().doubleValue() != expr2.evaluate().doubleValue();
+				break;
+			}
+		}
+		return value;
+    }
+	
+	public NumberType numberType(Expr expr) {
+		Number result = expr.evaluate();
+		if (result instanceof Double) {
+			return NumberType.FLOAT;
+		} else if (result instanceof Long) {
+			return NumberType.INTEGER;
+		} else {
+			return NumberType.OTHER;
+		}
+	}
 }

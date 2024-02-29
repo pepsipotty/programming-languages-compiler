@@ -23,4 +23,12 @@ public class UnitList extends ASTNode {
     public void print(PrintStream ps) { 
 	print(ps,""); 
     }
+
+    // public void check(){
+    //     unit.execute();
+    //     if (unitList != null){  
+    //         unitList.check();
+    //     }
+
+    // }
 }

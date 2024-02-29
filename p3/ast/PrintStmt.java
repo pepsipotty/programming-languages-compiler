@@ -6,6 +6,7 @@ public class PrintStmt extends Stmt {
     public PrintStmt(Expr e, Location loc) {
 	super(loc);
 	expr = e;
+    execute();  
     }
     public void print(PrintStream ps, String indent) { 
 	ps.print(indent + "print ");
@@ -14,5 +15,9 @@ public class PrintStmt extends Stmt {
     }
     public void print(PrintStream ps) { 
 	print(ps,"");
+    }
+
+    public void execute() {
+        System.out.println(expr.evaluate());
     }
 }

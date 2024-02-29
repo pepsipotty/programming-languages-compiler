@@ -1,0 +1,4 @@
+int x;
+x = readint;
+int y = x / 0;
+print y; print x;

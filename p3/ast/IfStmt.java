@@ -29,4 +29,14 @@ public class IfStmt extends Stmt {
     public void print(PrintStream ps) {     
 	print(ps,"");
     }
+
+	public void execute() {
+		if (expr.evaluate()) {
+			thenstmt.execute();
+		} else if (elsestmt != null) {
+			elsestmt.execute();
+		} else {
+			// do nothing
+		}
+    }
 }

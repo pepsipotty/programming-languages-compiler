@@ -10,4 +10,8 @@ public class FloatConstExpr extends Expr {
     public void print(PrintStream ps) {
 	ps.print(fval);
     }
+
+    public Number evaluate() {
+        return fval;
+    }
 }

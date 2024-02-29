@@ -18,4 +18,10 @@ public class WhileStmt extends Stmt {
     public void print(PrintStream ps) {     
 	print(ps,"");
     }
+
+    public void execute() {
+        while (expr.evaluate()) {
+            body.execute();
+        }
+    }
 }

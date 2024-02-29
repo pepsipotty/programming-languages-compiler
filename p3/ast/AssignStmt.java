@@ -8,6 +8,7 @@ public class AssignStmt extends Stmt {
 	super(loc);
 	ident = i;
 	expr = e;
+    execute();
     }
     public void print(PrintStream ps, String indent) { 
 	ps.print(indent + ident + " = ");
@@ -16,5 +17,9 @@ public class AssignStmt extends Stmt {
     }
     public void print(PrintStream ps) {     
 	print(ps,"");
+    }
+
+    public void execute() {
+        table.add(ident, expr.evaluate());
     }
 }

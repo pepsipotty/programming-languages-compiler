@@ -10,4 +10,11 @@ public class IntConstExpr extends Expr {
     public void print(PrintStream ps) {
 	ps.print(ival);
     }
+
+    public Number evaluate() {
+        // System.out.println("IntConstExpr.evaluate() called");
+        return ival;
+    }
 }
+
+//implement a subset (like + * - /) of the operators. Run bunch of programs that test this

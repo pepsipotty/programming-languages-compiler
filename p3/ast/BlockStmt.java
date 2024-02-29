@@ -15,4 +15,8 @@ public class BlockStmt extends Stmt {
     public void print(PrintStream ps) {     
 	print(ps,"");
     }
+
+    public void execute(String reference) {
+        
+    }
 }

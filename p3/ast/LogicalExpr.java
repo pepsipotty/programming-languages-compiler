@@ -32,4 +32,29 @@ public class LogicalExpr extends CondExpr {
 	expr2.print(ps);
 	ps.print(")");
     }
+
+	public boolean evaluate() {
+		boolean value = false;
+		switch (op) {
+			case AND:
+				value = expr1.evaluate(); // Evaluate the first expression
+				if (value) { // If true, then check the second expression
+					value = expr2.evaluate();
+				}
+				// If the first expression is false, value remains false (short-circuit)
+				break;
+			case OR:
+				value = expr1.evaluate(); // Evaluate the first expression
+				if (!value) { // If false, then only evaluate the second expression
+					value = expr2.evaluate();
+				}
+				// If the first expression is true, value remains true (short-circuit)
+				break;
+			case NOT:
+				value = !expr1.evaluate();
+				break;
+		}
+		return value;
+	}
+	
 }

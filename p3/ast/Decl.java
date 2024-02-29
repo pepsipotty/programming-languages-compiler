@@ -8,11 +8,13 @@ public class Decl extends Unit {
 	super(loc);
 	varDecl = d;
 	expr = null;
+	execute();
     }
     public Decl(VarDecl d, Expr e, Location loc) {
 	super(loc);
 	varDecl = d;
 	expr = e;
+	execute();
     }
     public void print(PrintStream ps, String indent) { 
 	ps.print(indent);
@@ -26,4 +28,11 @@ public class Decl extends Unit {
     public void print(PrintStream ps) {
 	print(ps,"");
     }
+
+	public void execute() {
+		if (expr != null){
+			table.add(varDecl.ident, expr.evaluate());
+		} 
+		table.getEntries();
+	}
 }
