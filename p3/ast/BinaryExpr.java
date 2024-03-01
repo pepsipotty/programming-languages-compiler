@@ -10,11 +10,6 @@ public class BinaryExpr extends Expr {
     public static final int DIV = 4;
     public final Expr expr1, expr2;
     public final int op;
-	// public enum NumberType {
-	// 	INTEGER,
-	// 	FLOAT,
-	// 	OTHER
-	// }
 
     public BinaryExpr(Expr e1, int oper, Expr e2, Location loc) {
 	super(loc);
@@ -36,7 +31,6 @@ public class BinaryExpr extends Expr {
     }
 
 	public Number evaluate() {
-		// NumberType type = numberType(expr1);
 		BiFunction<Number, Number, Number> operation = null;
 
 		Number expr1Value = expr1.evaluate(); // 1

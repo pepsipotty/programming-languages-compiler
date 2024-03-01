@@ -9,5 +9,4 @@ public abstract class Expr extends ASTNode {
     }
 
     public abstract Number evaluate();
-    // public abstract boolean evaluate();
 }

@@ -32,12 +32,8 @@ public class Table {
     }
 
     public void getEntries() {
-        //for debugging purposes
-        // System.out.println("Enter getEntries of Table");
         int index = 1;
         for (Map.Entry<String, Number> entry : table.entrySet()) {
-            // System.out.println(entry.getKey());
-            // System.out.println(entry.getValue());
             System.out.println(index + ". " + entry.getKey() + " | " + entry.getValue().toString());
             index++;
         }

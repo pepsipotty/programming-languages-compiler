@@ -6,12 +6,12 @@ public class UnitList extends ASTNode {
     public final UnitList unitList; 
     public UnitList(Unit u, UnitList ul, Location loc) {
         super(loc);
-	unit = u;
-	unitList = ul;
+        unit = u;
+        unitList = ul;
     }
     public UnitList(Unit u, Location loc) { 
         super(loc);
-	unit = u;
+        unit = u;
         unitList = null;
     }
     public void print(PrintStream ps, String indent) {
@@ -24,11 +24,11 @@ public class UnitList extends ASTNode {
 	print(ps,""); 
     }
 
-    // public void check(){
-    //     unit.execute();
-    //     if (unitList != null){  
-    //         unitList.check();
-    //     }
+    public void check(){
+        unit.execute();
+        if (unitList != null){  
+            unitList.check();
+        }
 
-    // }
+    }
 }

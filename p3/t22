@@ -1,0 +1,11 @@
+int k = readint;
+int l = readint;
+int m = readint;
+int result = 0;
+
+if (!(k != 0) && (l != 0 || m > 0)) {
+    result = 1;
+} else {
+    result = -1;
+}
+print result;

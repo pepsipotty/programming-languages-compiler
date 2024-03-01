@@ -10,7 +10,6 @@ public class ReadFloatExpr extends Expr {
     }
 
     public Number evaluate() {
-        System.out.println("ReadFloatExpr.evaluate() called");
         double value;
         if (table.s.hasNextFloat()) {
             value = table.s.nextFloat();

@@ -7,13 +7,13 @@ public class Program extends ASTNode {
     public Program(UnitList ul, Location loc) {
         super(loc);
         unitList = ul;
-        // check();
+        check();
     }
     public void print(PrintStream ps) {
 	unitList.print(ps,"");
     }
 
-    // private void check() {
-    // unitList.check();
-    // }
+    private void check() {
+        unitList.check();
+    }
 }

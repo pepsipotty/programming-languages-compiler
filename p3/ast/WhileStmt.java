@@ -1,5 +1,6 @@
 package ast;
 import java.io.PrintStream;
+import interpreter.Interpreter;
 
 public class WhileStmt extends Stmt {
     public final CondExpr expr;
@@ -8,6 +9,7 @@ public class WhileStmt extends Stmt {
 	super(loc);
 	expr = e;
 	body = s;
+    // execute();
     }
     public void print(PrintStream ps, String indent) { 
 	ps.print(indent + "while (");
@@ -20,7 +22,7 @@ public class WhileStmt extends Stmt {
     }
 
     public void execute() {
-        while (expr.evaluate()) {
+        while (expr.evaluate() == true) {
             body.execute();
         }
     }

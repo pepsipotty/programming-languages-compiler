@@ -1,5 +1,6 @@
 package ast;
 import java.io.PrintStream;
+import interpreter.Interpreter;
 
 public class CompExpr extends CondExpr {
     public static final int GE = 1;
@@ -33,7 +34,6 @@ public class CompExpr extends CondExpr {
     }
 
 	public boolean evaluate() {
-        // NumberType type = numberType(expr1);
 		Number expr1Value = expr1.evaluate(); // 1
 		Number expr2Value = expr2.evaluate(); // 2
 		boolean typeIsLong = expr1Value instanceof Long ? true : false; //true is integer, false is float

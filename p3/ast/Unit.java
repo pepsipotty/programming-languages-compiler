@@ -7,7 +7,7 @@ public abstract class Unit extends ASTNode {
     }
     public abstract void print(PrintStream ps, String ident);
 
-    // public abstract void execute();
+    public abstract void execute();
 
 
 }

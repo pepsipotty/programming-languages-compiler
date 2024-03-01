@@ -1,0 +1,9 @@
+int x = 5;
+int y = 1;
+int z;
+if (x < y) {
+    z = y;
+} else {
+    z = x;
+}
+print z;

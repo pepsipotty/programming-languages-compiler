@@ -16,7 +16,7 @@ public class BlockStmt extends Stmt {
 	print(ps,"");
     }
 
-    public void execute(String reference) {
-        
+    public void execute() {
+        block.check();    
     }
 }

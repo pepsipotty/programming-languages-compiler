@@ -12,7 +12,6 @@ public class ReadIntExpr extends Expr {
     }
 
     public Number evaluate() {
-        System.out.println("ReadIntExpr.evaluate() called");
         long value;
         if (table.s.hasNextInt()) {
             value = table.s.nextInt();

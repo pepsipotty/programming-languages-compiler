@@ -12,7 +12,6 @@ public class IntConstExpr extends Expr {
     }
 
     public Number evaluate() {
-        // System.out.println("IntConstExpr.evaluate() called");
         return ival;
     }
 }
