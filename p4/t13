@@ -1,0 +1,8 @@
+int base = readint;
+int exponent = readint;
+int result = 1;
+while (exponent > 0) {
+    result = result * base;
+    exponent = exponent - 1;
+}
+print result;

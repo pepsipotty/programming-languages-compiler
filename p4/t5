@@ -1,0 +1,6 @@
+int x = readint;
+int y = readint;
+int g = readfloat;
+int j = readint;
+int k = readint;
+int f = readfloat;

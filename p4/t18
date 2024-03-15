@@ -1,0 +1,10 @@
+int a = readint;
+int b = readint;
+int result = 0;
+
+if (a != 0 && b > 0) {
+    result = 1;
+} else {
+    result = -1;
+}
+print result;

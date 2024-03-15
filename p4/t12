@@ -1,0 +1,13 @@
+int n = readint;
+int a = 0;
+int b = 1;
+int temp;
+print a;
+print b;
+while (n > 2) {
+    temp = b;
+    b = a + b;
+    a = temp;
+    print b;
+    n = n - 1;
+}

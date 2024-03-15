@@ -1,0 +1,11 @@
+int h = readint;
+int i = readint;
+int j = readint;
+int result = 0;
+
+if ((h != 0 || i != 0) && j != 0) {
+    result = 1;
+} else {
+    result = -1;
+}
+print result;

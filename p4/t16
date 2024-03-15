@@ -1,0 +1,13 @@
+int start = readint;
+int count = 0;
+
+while (start > 0) {
+    print start;
+    start = start - 1;
+    int innerStart = 1;
+    while (innerStart <= count) {
+        print innerStart;
+        innerStart = innerStart + 1;
+    }
+    count = count + 1;
+}
