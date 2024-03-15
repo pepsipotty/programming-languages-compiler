@@ -11,8 +11,12 @@ public class IntConstExpr extends Expr {
 	ps.print(ival);
     }
 
-    public Number evaluate() {
-        return ival;
+    public AbstractValue evaluate() {
+        if (ival == 0) {
+            return AbstractValue.ZeroInt;
+        } else {
+            return AbstractValue.PosInt;
+        }
     }
 }
 

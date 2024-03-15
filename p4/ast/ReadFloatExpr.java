@@ -9,15 +9,15 @@ public class ReadFloatExpr extends Expr {
 	ps.print("readfloat");
     }
 
-    public Number evaluate() {
-        double value;
-        if (table.s.hasNextFloat()) {
-            value = table.s.nextFloat();
-        } else {
-            Interpreter.fatalError("EXIT_FAILED_STDIN_READ_FLOAT", 5);
-            value = 0;
-        }
-        return value;
+    public AbstractValue evaluate() {
+        // AbstractValue value;
+        // if (table.s.hasNextFloat()) {
+        //     value = AbstractValue.AnyFloat;
+        // } else {
+        //     Interpreter.fatalError("EXIT_FAILED_STDIN_READ_FLOAT", 5);
+        //     value = 0;
+        // }
+        return AbstractValue.AnyFloat;
     }
 }
 

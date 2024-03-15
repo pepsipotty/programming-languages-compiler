@@ -8,5 +8,5 @@ public abstract class Expr extends ASTNode {
 	super(loc);
     }
 
-    public abstract Number evaluate();
+    public abstract AbstractValue evaluate();
 }

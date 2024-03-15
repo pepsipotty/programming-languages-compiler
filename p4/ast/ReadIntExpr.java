@@ -11,14 +11,14 @@ public class ReadIntExpr extends Expr {
 	ps.print("readint");
     }
 
-    public Number evaluate() {
-        long value;
-        if (table.s.hasNextInt()) {
-            value = table.s.nextInt();
-        } else {
-            Interpreter.fatalError("EXIT_FAILED_STDIN_READ_INT", 5);
-            value = 0;
-        }
-        return value;
+    public AbstractValue evaluate() {
+        // AbstractValue value;
+        // if (table.s.hasNextInt()) {
+        //     value = AbstractValue.AnyInt;
+        // } else {
+        //     Interpreter.fatalError("EXIT_FAILED_STDIN_READ_INT", 5);
+        //     value = 0;
+        // }
+        return AbstractValue.AnyInt;
     }
 }

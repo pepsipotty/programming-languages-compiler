@@ -12,12 +12,12 @@ public class IdentExpr extends Expr {
 	ps.print(ident);
     }
 
-    public Number evaluate() {
+    public AbstractValue evaluate() {
         if (table.get(ident) != null) {
             return table.get(ident);
         } else {
             Interpreter.fatalError("Uninitialized Variable: " + ident, Interpreter.EXIT_UNINITIALIZED_VAR_ERROR);
-            return 0;
+            return AbstractValue.AnyInt;
         }
     }
 }

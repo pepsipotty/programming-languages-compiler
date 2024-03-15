@@ -11,7 +11,7 @@ public class FloatConstExpr extends Expr {
 	ps.print(fval);
     }
 
-    public Number evaluate() {
-        return fval;
+    public AbstractValue evaluate() {
+        return AbstractValue.PosFloat;
     }
 }

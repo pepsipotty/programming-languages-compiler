@@ -14,14 +14,28 @@ public class UnaryMinusExpr extends Expr {
 	ps.print(")");
     }
 
-    public Number evaluate() {
-        Number exprValue = expr.evaluate();
-        if (exprValue instanceof Long) {
-            return -((Long)exprValue);
-        } else if (exprValue instanceof Double) {
-            return -((Double)exprValue);
-        } else {
-            return null;
+    public AbstractValue evaluate() {
+        AbstractValue exprValue = expr.evaluate();
+        
+        switch (exprValue) {
+            case PosInt:
+                return AbstractValue.NegInt;
+            case NegInt:
+                return AbstractValue.PosInt;
+            case ZeroInt:
+                return AbstractValue.ZeroInt;
+            case PosFloat:
+                return AbstractValue.NegFloat;
+            case NegFloat:
+                return AbstractValue.PosFloat;
+            case ZeroFloat:
+                return AbstractValue.ZeroFloat;
+            case AnyInt:
+                return AbstractValue.AnyInt;
+            case AnyFloat:
+                return AbstractValue.AnyFloat;
+            default:
+                return exprValue;
         }
     }
 }

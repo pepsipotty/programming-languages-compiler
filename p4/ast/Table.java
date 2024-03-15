@@ -2,7 +2,7 @@ package ast;
 import java.util.*;
 public class Table {
     private static Table instance = null;
-    private HashMap<String, Number> table;
+    private HashMap<String, AbstractValue> table;
     public Scanner s = new Scanner(System.in);
 
  //complexity - number to float or number to long etc - Sum of 2 numbers, would have to get this Number obj, and get from it the primitive value type. 
@@ -18,12 +18,12 @@ public class Table {
         return instance;
     }
 
-    public void add(String identifier, Number type) {
+    public void add(String identifier, AbstractValue type) {
         table.put(identifier, type);
     }
     
 
-    public Number get(String name) {
+    public AbstractValue get(String name) {
         return table.get(name);
     }
 
@@ -33,7 +33,7 @@ public class Table {
 
     public void getEntries() {
         int index = 1;
-        for (Map.Entry<String, Number> entry : table.entrySet()) {
+        for (Map.Entry<String, AbstractValue> entry : table.entrySet()) {
             System.out.println(index + ". " + entry.getKey() + " | " + entry.getValue().toString());
             index++;
         }

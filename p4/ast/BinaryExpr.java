@@ -1,5 +1,6 @@
 package ast;
 import java.io.PrintStream;
+import java.util.function.BinaryOperator;
 import java.util.function.BiFunction;
 import interpreter.Interpreter;
 
@@ -30,42 +31,75 @@ public class BinaryExpr extends Expr {
 	ps.print(")");
     }
 
-	public Number evaluate() {
-		BiFunction<Number, Number, Number> operation = null;
-
-		Number expr1Value = expr1.evaluate(); // 1
-		Number expr2Value = expr2.evaluate(); // 2
+	public AbstractValue evaluate() {
+		AbstractValue expr1Value = expr1.evaluate(); // 1
+		AbstractValue expr2Value = expr2.evaluate(); // 2
+		AbstractValue result;
 
 		switch (op) {
 			case PLUS:
-				operation = (expr1Value instanceof Long) ?
-					(a, b) -> a.longValue() + b.longValue() :
-					(a, b) -> a.doubleValue() + b.doubleValue();
+				result = OperationMappings.getResult(expr1Value, expr2Value, BinaryOperation.PLUS);
 				break;
 			case MINUS:
-				operation = (expr1Value instanceof Long) ?
-					(a, b) -> a.longValue() - b.longValue() :
-					(a, b) -> a.doubleValue() - b.doubleValue();
+				result = OperationMappings.getResult(expr1Value, expr2Value, BinaryOperation.MINUS);
 				break;
 			case TIMES:
-				operation = (expr1Value instanceof Long) ?
-					(a, b) -> a.longValue() * b.longValue() :
-					(a, b) -> a.doubleValue() * b.doubleValue();
+				result = OperationMappings.getResult(expr1Value, expr2Value, BinaryOperation.TIMES);
 				break;
 			case DIV:
-				if (expr2Value.doubleValue() != 0) {
-					operation = (expr1Value instanceof Long) ?
-					(a, b) -> a.longValue() / b.longValue() :
-					(a, b) -> a.doubleValue() / b.doubleValue();
-				break;
-				} else {
+				if (expr2Value == AbstractValue.ZeroInt || expr2Value == AbstractValue.ZeroFloat || expr2Value == AbstractValue.AnyInt || expr2Value == AbstractValue.AnyFloat) {
 					Interpreter.fatalError("EXIT_DIV_BY_ZERO", Interpreter.EXIT_DIV_BY_ZERO_ERROR);
+					result = AbstractValue.AnyInt;
+				} else {
+					result = OperationMappings.getResult(expr1Value, expr2Value, BinaryOperation.DIV);
 				}
+				break;
 
+			default: 
+				result = AbstractValue.AnyInt;
+				break;
 		}
 
-		return operation.apply(expr1Value, expr2Value);
+		return result;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+	// public AbstractValue abstractAdd(AbstractValue value1, AbstractValue value2) {
+	// 	if (abstractValueIsLong(value1) && abstractValueIsLong(value2)) {
+	// 		//long
+	// 		if ((value1 === AbstractValue.AnyInt) || (value2 === AbstractValue.AnyInt))
+	// 			return AbstractValue.AnyInt;
+	// 		else if ((value1 === AbstractValue.PosInt) && (value2 === AbstractValue.PosInt))
+	// 			return AbstractValue.PosInt;
+	// 		else if ((value1 === AbstractValue.NegInt) && (value2 === AbstractValue.NegInt))
+	// 			return AbstractValue.NegInt;
+	// 		else if ((value1 === AbstractValue.ZeroInt) && (value2 === AbstractValue.ZeroInt))
+	// 			return AbstractValue.ZeroInt;
+	// 		else
+	// 			return AbstractValue.AnyInt;
+	// 	} else {
+	// 		//float
+	// 		return AbstractValue.AnyFloat;
+	// 	}
+	// }
+
+	// public boolean abstractValueIsLong(AbstractValue value) {
+	// 	if ((value === AbstractValue.AnyInt) || (value === AbstractValue.PosInt) || (value === AbstractValue.NegInt) || (value === AbstractValue.ZeroInt)) {
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}
+	// }
 		
 	
 }
