@@ -22,4 +22,8 @@ public class AssignStmt extends Stmt {
     public void execute() {
         table.add(ident, expr.evaluate());
     }
+
+    // public void execute(HashMap<String, AbstractValue> table) {
+    //     table.add(ident, expr.evaluate(table));
+    // }
 }

@@ -177,6 +177,49 @@ public class OperationMappings {
         operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.PosFloat, BinaryOperation.DIV), AbstractValue.AnyFloat); 
         operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.AnyFloat, BinaryOperation.DIV), AbstractValue.AnyFloat); //PROBLEM
 
+        // Mapping for MERGE operation
+        //Int
+        operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.NegInt, BinaryOperation.MERGE), AbstractValue.NegInt);
+        operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.ZeroInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+        operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.PosInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+        operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.AnyInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+
+        operationResults.put(new OperationKey(AbstractValue.ZeroInt, AbstractValue.NegInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+        operationResults.put(new OperationKey(AbstractValue.ZeroInt, AbstractValue.ZeroInt, BinaryOperation.MERGE), AbstractValue.ZeroInt);
+        operationResults.put(new OperationKey(AbstractValue.ZeroInt, AbstractValue.PosInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+        operationResults.put(new OperationKey(AbstractValue.ZeroInt, AbstractValue.AnyInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+
+        operationResults.put(new OperationKey(AbstractValue.PosInt, AbstractValue.NegInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+        operationResults.put(new OperationKey(AbstractValue.PosInt, AbstractValue.ZeroInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+        operationResults.put(new OperationKey(AbstractValue.PosInt, AbstractValue.PosInt, BinaryOperation.MERGE), AbstractValue.PosInt);
+        operationResults.put(new OperationKey(AbstractValue.PosInt, AbstractValue.AnyInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+
+        operationResults.put(new OperationKey(AbstractValue.AnyInt, AbstractValue.NegInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+        operationResults.put(new OperationKey(AbstractValue.AnyInt, AbstractValue.ZeroInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+        operationResults.put(new OperationKey(AbstractValue.AnyInt, AbstractValue.PosInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+        operationResults.put(new OperationKey(AbstractValue.AnyInt, AbstractValue.AnyInt, BinaryOperation.MERGE), AbstractValue.AnyInt);
+
+        // FLT
+        operationResults.put(new OperationKey(AbstractValue.NegFloat, AbstractValue.NegFloat, BinaryOperation.MERGE), AbstractValue.NegFloat);
+        operationResults.put(new OperationKey(AbstractValue.NegFloat, AbstractValue.ZeroFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+        operationResults.put(new OperationKey(AbstractValue.NegFloat, AbstractValue.PosFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+        operationResults.put(new OperationKey(AbstractValue.NegFloat, AbstractValue.AnyFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+
+        operationResults.put(new OperationKey(AbstractValue.ZeroFloat, AbstractValue.NegFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+        operationResults.put(new OperationKey(AbstractValue.ZeroFloat, AbstractValue.ZeroFloat, BinaryOperation.MERGE), AbstractValue.ZeroFloat);
+        operationResults.put(new OperationKey(AbstractValue.ZeroFloat, AbstractValue.PosFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+        operationResults.put(new OperationKey(AbstractValue.ZeroFloat, AbstractValue.AnyFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+
+        operationResults.put(new OperationKey(AbstractValue.PosFloat, AbstractValue.NegFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+        operationResults.put(new OperationKey(AbstractValue.PosFloat, AbstractValue.ZeroFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+        operationResults.put(new OperationKey(AbstractValue.PosFloat, AbstractValue.PosFloat, BinaryOperation.MERGE), AbstractValue.PosFloat);
+        operationResults.put(new OperationKey(AbstractValue.PosFloat, AbstractValue.AnyFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+
+        operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.NegFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+        operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.ZeroFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+        operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.PosFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+        operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.AnyFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+
     }
 
     public static AbstractValue getResult(AbstractValue left, AbstractValue right, BinaryOperation operation) {

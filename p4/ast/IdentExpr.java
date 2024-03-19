@@ -20,4 +20,13 @@ public class IdentExpr extends Expr {
             return AbstractValue.AnyInt;
         }
     }
+
+    // public AbstractValue evaluate(HashMap<String, AbstractValue> table) {
+    //     if (table.get(ident) != null) {
+    //         return table.get(ident);
+    //     } else {
+    //         Interpreter.fatalError("Uninitialized Variable: " + ident, Interpreter.EXIT_UNINITIALIZED_VAR_ERROR);
+    //         return AbstractValue.AnyInt;
+    //     }
+    // }
 }

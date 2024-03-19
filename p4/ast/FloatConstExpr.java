@@ -12,6 +12,10 @@ public class FloatConstExpr extends Expr {
     }
 
     public AbstractValue evaluate() {
-        return AbstractValue.PosFloat;
+        if (fval == 0) {
+            return AbstractValue.ZeroFloat;
+        } else {
+            return AbstractValue.PosFloat;
+        }
     }
 }

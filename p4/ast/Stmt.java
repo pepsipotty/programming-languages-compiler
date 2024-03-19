@@ -7,4 +7,6 @@ public abstract class Stmt extends Unit {
     }
 
     public abstract void execute();
+
+    // public abstract void execute(HashMap<String, AbstractValue> table);
 }

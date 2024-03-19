@@ -1,5 +1,6 @@
 package ast;
 import java.io.PrintStream;
+import java.util.HashMap;
 
 public class IfStmt extends Stmt {
     public final CondExpr expr; 
@@ -31,12 +32,49 @@ public class IfStmt extends Stmt {
     }
 
 	public void execute() {
-		if (expr.evaluate()) {
-			thenstmt.execute();
-		} else if (elsestmt != null) {
-			elsestmt.execute();
-		} else {
-			// do nothing
-		}
+		// if (expr.evaluate()) {
+		// 	thenstmt.execute();
+		// } else if (elsestmt != null) {
+		// 	elsestmt.execute();
+		// } else {
+		// 	// do nothing
+		// }
+
+
+		//make a copy of the table
+		
+
+
+		//execute the thenstmt
+		//make a copy of the table
+		//execute the elsestmt
+		//merge the two tables
+
+		// --------------
+		//get copy of state - separate java obj with same data as original, but is different 
+
+		    //x = Table.createCopy()
+    // thenpart.execute()
+    // y = Table.createCopy()
+    // Table.resetState(x)
+    // elsepart.execute()
+    // Table.merge(y)
+
+		// originalState = table.getState();	
+		table.newState(); // create s1
+		thenstmt.execute(); //execute the then block on state s. We don't need to create a temporary state. We modify the OG state directly
+		HashMap<String, AbstractValue> s1 = table.getTempState(); //get the state s1
+		table.abortTempState(); //abort the temporary state s1, we've made a copy of it and don't need it anymore
+
+		table.newState(); //create a new state, s2 for the else statement to operate on
+		elsestmt.execute(); // everything here is operating on the new state, s2, and not the original state s1. 
+		HashMap<String, AbstractValue> s2 = table.getTempState(); //get the state s2
+		table.abortTempState();
+
+		table.mergeState(s1, s2); //merge the two states together, s2 and s to get the final state. After merge, s2 is deleted and we revert back to the OG state s
+
+
+
+
     }
 }

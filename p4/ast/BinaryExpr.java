@@ -54,11 +54,11 @@ public class BinaryExpr extends Expr {
 					result = OperationMappings.getResult(expr1Value, expr2Value, BinaryOperation.DIV);
 				}
 				break;
-
 			default: 
 				result = AbstractValue.AnyInt;
 				break;
 		}
+		//write enough test cases, make sure it's right get it out of theway
 
 		return result;
 	}

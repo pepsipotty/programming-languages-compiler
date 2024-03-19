@@ -26,4 +26,6 @@ public class WhileStmt extends Stmt {
             body.execute();
         }
     }
+
+    //jsut check if the new state and the old state are the same. Operative difference
 }

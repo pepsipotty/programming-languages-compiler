@@ -1,0 +1,1 @@
+int x; int z = 2; if (z >2) { x = 1; } else { int j = 5; } int y = x;
