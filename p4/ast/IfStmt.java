@@ -32,35 +32,7 @@ public class IfStmt extends Stmt {
     }
 
 	public void execute() {
-		// if (expr.evaluate()) {
-		// 	thenstmt.execute();
-		// } else if (elsestmt != null) {
-		// 	elsestmt.execute();
-		// } else {
-		// 	// do nothing
-		// }
 
-
-		//make a copy of the table
-		
-
-
-		//execute the thenstmt
-		//make a copy of the table
-		//execute the elsestmt
-		//merge the two tables
-
-		// --------------
-		//get copy of state - separate java obj with same data as original, but is different 
-
-		    //x = Table.createCopy()
-    // thenpart.execute()
-    // y = Table.createCopy()
-    // Table.resetState(x)
-    // elsepart.execute()
-    // Table.merge(y)
-
-		// originalState = table.getState();	
 		table.newState(); // create s1
 		thenstmt.execute(); //execute the then block on state s. We don't need to create a temporary state. We modify the OG state directly
 		HashMap<String, AbstractValue> s1 = table.getTempState(); //get the state s1

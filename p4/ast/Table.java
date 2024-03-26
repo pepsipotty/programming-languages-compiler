@@ -50,6 +50,16 @@ public class Table {
         System.out.println("------------------");
     }
 
+    public void getEntries(HashMap<String, AbstractValue> state) {
+        HashMap<String, AbstractValue> targetTable = state;
+        int index = 1;
+        for (Map.Entry<String, AbstractValue> entry : targetTable.entrySet()) {
+            System.out.println(index + ". " + entry.getKey() + " | " + entry.getValue().toString());
+            index++;
+        }
+        System.out.println("------------------");
+    }
+
 
     public void newState() {
         tempState = new HashMap<>(originalState);
@@ -66,9 +76,24 @@ public class Table {
                         );
                 };
             });
-            originalState = buffer;
+            originalState = new HashMap<String, AbstractValue>(buffer);
             abortTempState();
     }
+
+    public HashMap<String, AbstractValue> mergeStateWhile(HashMap<String, AbstractValue> s1, HashMap<String, AbstractValue> s2) {
+        HashMap<String, AbstractValue> buffer = new HashMap<String, AbstractValue>();
+            // consult merging rules
+            s2.forEach((key, value) -> {
+                if (s1.containsKey(key)) {
+                    buffer.put(
+                        key, //the identifier 
+                        OperationMappings.getResult(s2.get(key), s1.get(key), BinaryOperation.MERGE) //the merged states
+                        );
+                };
+            });
+            return buffer;
+    }
+
 
     // Simply discard the changes
     public void abortTempState() {
@@ -83,5 +108,17 @@ public class Table {
         }
     }
 
+    public HashMap<String, AbstractValue> getOriginalState() {
+        return originalState;
+    }
+
+    public void setOriginalState(HashMap<String, AbstractValue> state) {
+        originalState = new HashMap<String, AbstractValue>(state);
+        abortTempState();
+    }
+
+    public boolean isTempState() {
+        return tempState != null;
+    }
 
 }

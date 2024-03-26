@@ -1,6 +1,7 @@
 package ast;
 import java.io.PrintStream;
 import interpreter.Interpreter;
+import java.util.HashMap;
 
 public class WhileStmt extends Stmt {
     public final CondExpr expr;
@@ -22,10 +23,19 @@ public class WhileStmt extends Stmt {
     }
 
     public void execute() {
-        while (expr.evaluate() == true) {
+        HashMap<String, AbstractValue> previousMerge = new HashMap<>(table.getOriginalState()); 
+        HashMap<String, AbstractValue> currentMerge;
+        while (true) {
             body.execute();
-        }
-    }
+            currentMerge = new HashMap<>(table.mergeStateWhile(previousMerge, table.getOriginalState()));
 
-    //jsut check if the new state and the old state are the same. Operative difference
+            if (currentMerge.equals(previousMerge)) {
+                table.setOriginalState(currentMerge);
+                break;
+            } else {
+                previousMerge = currentMerge;
+            }
+        }
+
+    }
 }
