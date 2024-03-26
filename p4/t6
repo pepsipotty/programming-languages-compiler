@@ -1,6 +1,39 @@
-int x = readint;
-print x;
-while (x < 10) {
-    x = x + 1;
-}
-print x;
+int pos = 5;
+int neg = -5;
+int zero = 0;
+int anyint = neg + pos;
+
+
+int a = neg + neg;
+int b = neg + zero;
+int c = neg + pos;
+int d = neg + anyint;
+int e = zero + neg;
+int f = zero + zero;
+int g = zero + pos;
+int h = zero + anyint;
+int i = pos + neg;
+int j = pos + zero;
+int k = pos + pos;
+int l = pos + anyint;
+int m = anyint + neg;
+int n = anyint + zero;
+int o = anyint + pos;
+int p = anyint + anyint;
+
+print a;
+print b;
+print c;
+print d;    
+print e;
+print f;
+print g;
+print h;
+print i;
+print j;
+print k;
+print l;
+print m;
+print n;
+print o;
+print p;

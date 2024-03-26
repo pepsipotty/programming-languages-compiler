@@ -1,7 +1,22 @@
-int n = readint; 
-int sum = 0;
-while (n > 0) {
-    sum = sum + n;
-    n = n - 1;
-}
-print sum;
+int pos = 5;
+int neg = -5;
+int zero = 0;
+int anyint = neg - neg;
+
+int a = neg / neg;
+int c = neg / pos;
+int e = zero / neg;
+int g = zero / pos;
+int i = pos / neg;
+int k = pos / pos;
+int m = anyint / neg;
+int o = anyint / pos;
+
+print a;
+print c;
+print e;    
+print g;
+print i;
+print k;
+print m;
+print o;

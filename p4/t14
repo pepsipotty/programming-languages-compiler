@@ -1,7 +1,5 @@
-int n = readint;
-int count = 0;
-while (n > 0) {
-    count = count + 1;
-    n = n / 10;
-}
-print count;
+int pos = 5;
+int neg = -5;
+int zero = 0;
+int anyint = neg - neg;
+int f = zero / zero; print f;

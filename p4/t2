@@ -1,4 +1,1 @@
-int x;
-x = readint;
-int y = x / 0;
-print y; print x;
+int x; int y = x; print x;

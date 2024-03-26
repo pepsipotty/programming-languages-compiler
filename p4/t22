@@ -1,1 +1,5 @@
-int x; if (x == x) { x = 1; } else {x = -2; } int y = x;
+float pos = 5.00;
+float neg = -5.0;
+float zero = 0.0;
+float anyint = neg - neg;
+float f = zero / zero; print f;

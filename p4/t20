@@ -1,11 +1,11 @@
-int e = readint;
-int f = readint;
-int g = readint;
-int result = 0;
+float pos = 5.00;
+float neg = -5.0;
+float zero = 0.0;
+float anyint = neg - neg;
 
-if ((e != 0 && f != 0) || g != 0) {
-    result = 1;
-} else {
-    result = -1;
-}
-print result;
+
+float b = neg / zero;
+
+
+print b;
+

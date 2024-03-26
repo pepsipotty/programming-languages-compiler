@@ -1,10 +1,5 @@
-int a = readint;
-int b = readint;
-int result = 0;
-
-if (a != 0 && b > 0) {
-    result = 1;
-} else {
-    result = -1;
-}
-print result;
+int pos = 5;
+int neg = -5;
+int zero = 0;
+int anyint = neg - neg;
+int n = anyint / zero; print n;

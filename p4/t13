@@ -1,8 +1,6 @@
-int base = readint;
-int exponent = readint;
-int result = 1;
-while (exponent > 0) {
-    result = result * base;
-    exponent = exponent - 1;
-}
-print result;
+int pos = 5;
+int neg = -5;
+int zero = 0;
+int anyint = neg - neg;
+int d = neg / anyint;
+print d;  

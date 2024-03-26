@@ -1,16 +1,5 @@
-int base = readint;
-int exponent = readint;
-int result = 1;
-int i = 0;
-
-while (i < exponent) {
-    int tempResult = result;
-    int count = 0;
-    while (count < base) {
-        result = result + tempResult;
-        count = count + 1;
-    }
-    result = result - tempResult;
-    i = i + 1;
-}
-print result;
+int pos = 5;
+int neg = -5;
+int zero = 0;
+int anyint = neg - neg;
+int l = pos / anyint; print l;

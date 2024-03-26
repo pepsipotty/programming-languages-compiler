@@ -1,6 +1,2 @@
-int x = readint;
-int y = readint;
-int g = readfloat;
-int j = readint;
-int k = readint;
-int f = readfloat;
+int x = 5; int y = 3; int z = x - y; print z;
+int x = 5; int y = -3; int z = x - y; print z;

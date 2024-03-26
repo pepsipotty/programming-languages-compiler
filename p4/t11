@@ -1,10 +1,22 @@
-int a = readint;
-int b = readint;
-while (a != b) {
-    if (a > b) {
-        a = a - b;
-    } else {
-        b = b - a;
-    }
-}
+float pos = 5.00;
+float neg = -5.0;
+float zero = 0.00;
+float anyfloat = neg - neg;
+
+float a = neg / neg;
+float c = neg / pos;
+float e = zero / neg;
+float g = zero / pos;
+float i = pos / neg;
+float k = pos / pos;
+float m = anyfloat / neg;
+float o = anyfloat / pos;
+
 print a;
+print c;
+print e;    
+print g;
+print i;
+print k;
+print m;
+print o;
