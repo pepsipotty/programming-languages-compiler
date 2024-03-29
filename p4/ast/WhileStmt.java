@@ -25,17 +25,29 @@ public class WhileStmt extends Stmt {
     public void execute() {
         HashMap<String, AbstractValue> previousMerge = new HashMap<>(table.getOriginalState()); 
         HashMap<String, AbstractValue> currentMerge;
+        // System.out.println("Initial State(sigmaPrimeZero): " + table.getOriginalState());
+        // table.getEntries();
+        int x = 1;
         while (true) {
+            // System.out.println("Iteration " + x);
             body.execute();
+            // System.out.println("State after iteration " + x + ": " + table.getOriginalState());
             currentMerge = new HashMap<>(table.mergeStateWhile(previousMerge, table.getOriginalState()));
 
+            // System.out.println("currentMerge for iteration " + x + ": " + currentMerge);
             if (currentMerge.equals(previousMerge)) {
+                // System.out.println("Convergence at: " + x);
+                // System.out.println("Final State: " + currentMerge);
                 table.setOriginalState(currentMerge);
                 break;
             } else {
                 previousMerge = currentMerge;
+                table.setOriginalState(currentMerge);
             }
+            x++;
         }
+        // System.out.println("Final State: " + table.getOriginalState());
+        
 
     }
 }

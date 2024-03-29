@@ -1,0 +1,5 @@
+int p = 0;
+while (q<p) {
+    p = p + 1;
+    print p;
+}

@@ -1,0 +1,12 @@
+x=1; 
+y=1; 
+
+if (1==1){
+ int z = -x;
+} else { 
+int z =3;
+}
+
+print(x); 
+print(y);
+print(z);
