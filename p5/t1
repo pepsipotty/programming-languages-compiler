@@ -1,0 +1,1 @@
+x = 5; while (x==x) { x=-x; print x;} print x;

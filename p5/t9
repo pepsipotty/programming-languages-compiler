@@ -1,0 +1,39 @@
+float pos = 5.00;
+float neg = -5.0;
+float zero = 0.0;
+float anyfloat = neg - neg;
+
+
+float a = neg * neg;
+float b = neg * zero;
+float c = neg * pos;
+float d = neg * anyfloat;
+float e = zero * neg;
+float f = zero * zero;
+float g = zero * pos;
+float h = zero * anyfloat;
+float i = pos * neg;
+float j = pos * zero;
+float k = pos * pos;
+float l = pos * anyfloat;
+float m = anyfloat * neg;
+float n = anyfloat * zero;
+float o = anyfloat * pos;
+float p = anyfloat * anyfloat;
+
+print a;
+print b;
+print c;
+print d;    
+print e;
+print f;
+print g;
+print h;
+print i;
+print j;
+print k;
+print l;
+print m;
+print n;
+print o;
+print p;

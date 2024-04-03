@@ -1,0 +1,5 @@
+float pos = 5.00;
+float neg = -5.0;
+float zero = 0.0;
+float anyint = neg - neg;
+float n = anyint / zero; print n;

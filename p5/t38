@@ -1,0 +1,15 @@
+int x = 76;
+int y = 4832;
+while(1 == 1) {
+    x = -x;
+    if(7 <= 23) {
+        int z = x;
+    } else {
+        int z = 3;
+    }
+    print x;
+    print z;
+}
+print x;
+print y;
+print z;
