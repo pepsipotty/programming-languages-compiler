@@ -14,6 +14,7 @@ public class Interpreter {
     public static final int EXIT_UNINITIALIZED_VAR_ERROR = 3;
     public static final int EXIT_DIV_BY_ZERO_ERROR = 4;
     public static final int EXIT_FAILED_STDIN_READ = 5;
+    public static final int EXIT_DEAD_CODE = 6;
     public static void main(String[] args) {
         String filename = args[0];
         Program astRoot = null;

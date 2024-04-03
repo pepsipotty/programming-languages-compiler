@@ -1,6 +1,0 @@
-int pos = 5;
-int neg = -5;
-int zero = 0;
-int anyint = neg - neg;
-int d = neg / anyint;
-print d;  

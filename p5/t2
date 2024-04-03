@@ -1,1 +1,11 @@
-int x; int y = x; print x;
+int x = 5;
+int y = -3;
+
+if (y <= x) {
+    if (x<y) {
+        x = 4;
+    }
+    x = 3;
+} 
+
+print x;

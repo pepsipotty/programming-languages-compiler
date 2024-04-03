@@ -23,31 +23,63 @@ public class WhileStmt extends Stmt {
     }
 
     public void execute() {
+
+
+        boolean needToMerge = false;
+        AbstractValue cond = expr.evaluate();
+
+        // case 1: statically guaranteed to be false; loop body is dead code
+        if (cond == AbstractValue.False) {
+            Interpreter.fatalError("EXIT_DEAD_CODE: while cond evaluated to: " + expr.evaluate(), Interpreter.EXIT_DEAD_CODE);
+        }
+
+        // case 2: statically guaranteed to be true; at least one iteration;
+        // modify the state for one iteration and continue with general case
+        if (cond == AbstractValue.True) {
+
+            if (needToMerge) {
+
+                HashMap<String, AbstractValue> s0 = new HashMap<>(table.getOriginalState()); // create copy of original state
+                
+                body.execute();
+
+                HashMap<String, AbstractValue> s1 = new HashMap<>(table.getOriginalState());
+
+                HashMap<String, AbstractValue> mergedState = table.mergeStateWhile(s0, s1);
+
+                table.setOriginalState(mergedState);
+
+            } else {
+
+                body.execute();
+
+            }
+        }
+
+
         HashMap<String, AbstractValue> previousMerge = new HashMap<>(table.getOriginalState()); 
         HashMap<String, AbstractValue> currentMerge;
-        // System.out.println("Initial State(sigmaPrimeZero): " + table.getOriginalState());
-        // table.getEntries();
-        int x = 1;
+
         while (true) {
-            // System.out.println("Iteration " + x);
+            
             body.execute();
-            // System.out.println("State after iteration " + x + ": " + table.getOriginalState());
             currentMerge = new HashMap<>(table.mergeStateWhile(previousMerge, table.getOriginalState()));
 
-            // System.out.println("currentMerge for iteration " + x + ": " + currentMerge);
             if (currentMerge.equals(previousMerge)) {
-                // System.out.println("Convergence at: " + x);
-                // System.out.println("Final State: " + currentMerge);
+
                 table.setOriginalState(currentMerge);
+
                 break;
+
             } else {
+
                 previousMerge = currentMerge;
+
                 table.setOriginalState(currentMerge);
+
             }
-            x++;
+
         }
-        // System.out.println("Final State: " + table.getOriginalState());
-        
 
     }
 }

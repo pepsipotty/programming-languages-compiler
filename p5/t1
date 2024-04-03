@@ -1,1 +1,8 @@
-x = 5; while (x==x) { x=-x; print x;} print x;
+int x = 5;
+int y = -3;
+
+if (y <= x) {
+    x = 3;
+} else {
+    x = 4;
+}

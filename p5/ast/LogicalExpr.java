@@ -1,5 +1,6 @@
 package ast;
 import java.io.PrintStream;
+import ast.AbstractValue;
 
 public class LogicalExpr extends CondExpr {
     public static final int AND = 1;
@@ -33,25 +34,59 @@ public class LogicalExpr extends CondExpr {
 	ps.print(")");
     }
 
-	public boolean evaluate() {
-		boolean value = false;
+	public AbstractValue evaluate() {
+		AbstractValue value = AbstractValue.False;
 		switch (op) {
 			case AND:
-				value = expr1.evaluate(); // Evaluate the first expression
-				if (value) { // If true, then check the second expression
+			// If true, then check the second expression 
+				if (expr1.evaluate() == AbstractValue.True) {  // case 1
+
 					value = expr2.evaluate();
+
+				} else if (expr1.evaluate() == AbstractValue.False) { // case 2
+
+					value = AbstractValue.False;
+
+				} else if (expr1.evaluate() == AbstractValue.AnyBool) { // case 3
+
+					value = OperationMappings.getResult(AbstractValue.AnyBool, expr2.evaluate(), LogicalOperation.AND);
+
 				}
-				// If the first expression is false, value remains false (short-circuit)
+
 				break;
 			case OR:
-				value = expr1.evaluate(); // Evaluate the first expression
-				if (!value) { // If false, then only evaluate the second expression
+				 // Evaluate the first expression
+				if (expr1.evaluate() == AbstractValue.False) { // If false, then only evaluate the second expression 
+
 					value = expr2.evaluate();
+
+				} else if (expr1.evaluate() == AbstractValue.True) { // If true, then value is true
+
+					value = AbstractValue.True;
+
+				} else if (expr1.evaluate() == AbstractValue.AnyBool) { // If the first expression is AnyBool, then the value is AnyBool
+
+					value = OperationMappings.getResult(AbstractValue.AnyBool, expr2.evaluate(), LogicalOperation.OR);
+
 				}
-				// If the first expression is true, value remains true (short-circuit)
+				
 				break;
 			case NOT:
-				value = !expr1.evaluate();
+
+				if (expr1.evaluate() == AbstractValue.True) { // If the expression is true, then the value is false
+
+					value = AbstractValue.False;
+
+				} else if (expr1.evaluate() == AbstractValue.False) { // If the expression is false, then the value is true
+
+					value = AbstractValue.True;
+
+				} else if (expr1.evaluate() == AbstractValue.AnyBool) { // If the expression is AnyBool, then the value is AnyBool
+
+					value = AbstractValue.AnyBool;
+
+				}
+
 				break;
 		}
 		return value;

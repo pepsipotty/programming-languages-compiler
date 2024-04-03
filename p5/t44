@@ -1,8 +1,0 @@
-int x = 1;
-int y;
-float z = readfloat;
-if (x>0 && y>0)
-{
-    print z;
-    print y;
-}

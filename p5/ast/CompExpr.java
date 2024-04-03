@@ -1,6 +1,8 @@
 package ast;
 import java.io.PrintStream;
 import interpreter.Interpreter;
+import java.util.HashMap;
+import ast.CompOperation;
 
 public class CompExpr extends CondExpr {
     public static final int GE = 1;
@@ -33,63 +35,34 @@ public class CompExpr extends CondExpr {
 	ps.print(")");
     }
 
-	public boolean evaluate() {
+	public AbstractValue evaluate() {
 		AbstractValue expr1Value = expr1.evaluate(); // 1
 		AbstractValue expr2Value = expr2.evaluate(); // 2
-		boolean typeIsLong = expr1Value instanceof Long ? true : false; //true is integer, false is float
+		boolean typeIsLong = (expr1Value == AbstractValue.AnyInt || expr1Value == AbstractValue.PosInt || expr1Value ==  AbstractValue.NegInt) ? true : false; //true is integer, false is float
 		boolean typeIsDouble = !typeIsLong;
-		boolean value = false;
+		// boolean value = false;
+		AbstractValue value = AbstractValue.False;
 		switch (op) {
 			case GE: 
-			if (typeIsLong) {
-				value = expr1Value.longValue() >= expr2Value.longValue();
+				value = OperationMappings.getResult(expr1Value, expr2Value, CompOperation.GE);
 				break;
-			} else if (typeIsDouble) {
-				value = expr1Value.doubleValue() >= expr2Value.doubleValue();
-				break;
-			}
 			case GT:
-			if (typeIsLong) {
-				value = expr1Value.longValue() > expr2Value.longValue();
+				value = OperationMappings.getResult(expr1Value, expr2Value, CompOperation.GT);
 				break;
-			} else if (typeIsDouble) {
-				value = expr1Value.doubleValue() > expr2Value.doubleValue();
-				break;
-			}
 			case LE:
-			if (typeIsLong) {
-				value = expr1Value.longValue() <= expr2Value.longValue();
+				value = OperationMappings.getResult(expr1Value, expr2Value, CompOperation.LE);
 				break;
-			} else if (typeIsDouble) {
-				value = expr1Value.doubleValue() <= expr2Value.doubleValue();
-				break;
-			}
 			case LT:
-			if (typeIsLong) {
-				value = expr1Value.longValue() < expr2Value.longValue();
+				value = OperationMappings.getResult(expr1Value, expr2Value, CompOperation.LT);
 				break;
-			} else if (typeIsDouble) {
-				value = expr1Value.doubleValue() < expr2Value.doubleValue();
-				break;
-			}
 			case EQ:
-			if (typeIsLong) {
-				value = expr1Value.longValue() == expr2Value.longValue();
+				value = OperationMappings.getResult(expr1Value, expr2Value, CompOperation.EQ);
 				break;
-			} else if (typeIsDouble) {
-				value = expr1Value.doubleValue() == expr2Value.doubleValue();
-				break;
-			}
 			case NE:
-			if (typeIsLong) {
-				value = expr1Value.longValue() != expr2Value.longValue();
+				value = OperationMappings.getResult(expr1Value, expr2Value, CompOperation.NE);
 				break;
-			} else if (typeIsDouble) {
-				value = expr1Value.doubleValue() != expr2Value.doubleValue();
-				break;
-			}
 		}
-		return true;
+		return value;
     }
 
 }

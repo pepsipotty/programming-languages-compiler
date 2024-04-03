@@ -3,6 +3,7 @@ import ast.AbstractValue;
 import ast.OperationKey;
 import ast.BinaryOperation;
 import ast.CompOperation;
+import ast.LogicalOperation;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -11,6 +12,16 @@ public class OperationMappings {
     private static final Map<OperationKey, AbstractValue> operationResults = new HashMap<>();
 
     static {
+
+                /*
+        ____ ___ _   _    _    ______   __   ___  ____  _____ ____      _  _____ ___ ___  _   _ ____  
+        | __ )_ _| \ | |  / \  |  _ \ \ / /  / _ \|  _ \| ____|  _ \    / \|_   _|_ _/ _ \| \ | / ___| 
+        |  _ \| ||  \| | / _ \ | |_) \ V /  | | | | |_) |  _| | |_) |  / _ \ | |  | | | | |  \| \___ \ 
+        | |_) | || |\  |/ ___ \|  _ < | |   | |_| |  __/| |___|  _ <  / ___ \| |  | | |_| | |\  |___) |
+        |____/___|_| \_/_/   \_\_| \_\|_|    \___/|_|   |_____|_| \_\/_/   \_\_| |___\___/|_| \_|____/ 
+                                                                                                        
+        */
+
         // Mapping for PLUS operation
         //INT
         operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.NegInt, BinaryOperation.PLUS), AbstractValue.NegInt);
@@ -179,6 +190,17 @@ public class OperationMappings {
         operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.PosFloat, BinaryOperation.DIV), AbstractValue.AnyFloat); 
         operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.AnyFloat, BinaryOperation.DIV), AbstractValue.AnyFloat); //PROBLEM
 
+                /*
+        
+        __  __ _____ ____   ____ _____    ___  ____  _____ ____      _  _____ ___ ___  _   _ ____  
+        |  \/  | ____|  _ \ / ___| ____|  / _ \|  _ \| ____|  _ \    / \|_   _|_ _/ _ \| \ | / ___| 
+        | |\/| |  _| | |_) | |  _|  _|   | | | | |_) |  _| | |_) |  / _ \ | |  | | | | |  \| \___ \ 
+        | |  | | |___|  _ <| |_| | |___  | |_| |  __/| |___|  _ <  / ___ \| |  | | |_| | |\  |___) |
+        |_|  |_|_____|_| \_\\____|_____|  \___/|_|   |_____|_| \_\/_/   \_\_| |___\___/|_| \_|____/ 
+                                                                                                    
+        
+        */
+
         // Mapping for MERGE operation
         //Int
         operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.NegInt, BinaryOperation.MERGE), AbstractValue.NegInt);
@@ -221,6 +243,17 @@ public class OperationMappings {
         operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.ZeroFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
         operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.PosFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
         operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.AnyFloat, BinaryOperation.MERGE), AbstractValue.AnyFloat);
+
+        /*
+ 
+    ____ ___  __  __ ____     ___  ____  _____ ____      _  _____ ___ ___  _   _ ____  
+   / ___/ _ \|  \/  |  _ \   / _ \|  _ \| ____|  _ \    / \|_   _|_ _/ _ \| \ | / ___| 
+  | |  | | | | |\/| | |_) | | | | | |_) |  _| | |_) |  / _ \ | |  | | | | |  \| \___ \ 
+  | |__| |_| | |  | |  __/  | |_| |  __/| |___|  _ <  / ___ \| |  | | |_| | |\  |___) |
+   \____\___/|_|  |_|_|      \___/|_|   |_____|_| \_\/_/   \_\_| |___\___/|_| \_|____/ 
+                                                                                       
+ 
+*/
 
         // Mapping for GREATER EQUAL operation
         //Int
@@ -480,7 +513,44 @@ public class OperationMappings {
         operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.PosFloat, CompOperation.NE), AbstractValue.AnyBool);
         operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.AnyFloat, CompOperation.NE), AbstractValue.AnyBool);
 
+        /*
+ 
+   _     ___   ____ ___ ____    _    _        ___  ____  _____ ____      _  _____ ___ ___  _   _ ____  
+  | |   / _ \ / ___|_ _/ ___|  / \  | |      / _ \|  _ \| ____|  _ \    / \|_   _|_ _/ _ \| \ | / ___| 
+  | |  | | | | |  _ | | |     / _ \ | |     | | | | |_) |  _| | |_) |  / _ \ | |  | | | | |  \| \___ \ 
+  | |__| |_| | |_| || | |___ / ___ \| |___  | |_| |  __/| |___|  _ <  / ___ \| |  | | |_| | |\  |___) |
+  |_____\___/ \____|___\____/_/   \_\_____|  \___/|_|   |_____|_| \_\/_/   \_\_| |___\___/|_| \_|____/ 
+                                                                                                       
+ 
+*/
+        // AND
+        operationResults.put(new OperationKey(AbstractValue.True, AbstractValue.True, LogicalOperation.AND), AbstractValue.True);
+        operationResults.put(new OperationKey(AbstractValue.True, AbstractValue.False, LogicalOperation.AND), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.True, AbstractValue.AnyBool, LogicalOperation.AND), AbstractValue.AnyBool);
 
+        operationResults.put(new OperationKey(AbstractValue.False, AbstractValue.True, LogicalOperation.AND), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.False, AbstractValue.False, LogicalOperation.AND), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.False, AbstractValue.AnyBool, LogicalOperation.AND), AbstractValue.False);
+
+        operationResults.put(new OperationKey(AbstractValue.AnyBool, AbstractValue.True, LogicalOperation.AND), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.AnyBool, AbstractValue.False, LogicalOperation.AND), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.AnyBool, AbstractValue.AnyBool, LogicalOperation.AND), AbstractValue.AnyBool);
+        
+
+        // OR
+        operationResults.put(new OperationKey(AbstractValue.True, AbstractValue.True, LogicalOperation.OR), AbstractValue.True);
+        operationResults.put(new OperationKey(AbstractValue.True, AbstractValue.False, LogicalOperation.OR), AbstractValue.True);
+        operationResults.put(new OperationKey(AbstractValue.True, AbstractValue.AnyBool, LogicalOperation.OR), AbstractValue.True);
+
+        operationResults.put(new OperationKey(AbstractValue.False, AbstractValue.True, LogicalOperation.OR), AbstractValue.True);
+        operationResults.put(new OperationKey(AbstractValue.False, AbstractValue.False, LogicalOperation.OR), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.False, AbstractValue.AnyBool, LogicalOperation.OR), AbstractValue.AnyBool);
+
+        operationResults.put(new OperationKey(AbstractValue.AnyBool, AbstractValue.True, LogicalOperation.OR), AbstractValue.True);
+        operationResults.put(new OperationKey(AbstractValue.AnyBool, AbstractValue.False, LogicalOperation.OR), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.AnyBool, AbstractValue.AnyBool, LogicalOperation.OR), AbstractValue.AnyBool);
+
+        // TO:DO NOT
 
 
 
@@ -488,5 +558,13 @@ public class OperationMappings {
 
     public static AbstractValue getResult(AbstractValue left, AbstractValue right, BinaryOperation operation) {
         return operationResults.getOrDefault(new OperationKey(left, right, operation), AbstractValue.AnyInt);
+    }
+
+    public static AbstractValue getResult(AbstractValue left, AbstractValue right, CompOperation operation) {
+        return operationResults.getOrDefault(new OperationKey(left, right, operation), AbstractValue.AnyInt);
+    }
+
+    public static AbstractValue getResult(AbstractValue left, AbstractValue right, LogicalOperation operation) {
+        return operationResults.getOrDefault(new OperationKey(left, right, operation), AbstractValue.AnyInt); 
     }
 }

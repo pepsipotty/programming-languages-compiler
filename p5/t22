@@ -1,5 +1,0 @@
-float pos = 5.00;
-float neg = -5.0;
-float zero = 0.0;
-float anyint = neg - neg;
-float f = zero / zero; print f;

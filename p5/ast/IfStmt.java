@@ -1,6 +1,7 @@
 package ast;
 import java.io.PrintStream;
 import java.util.HashMap;
+import interpreter.Interpreter;
 
 public class IfStmt extends Stmt {
     public final CondExpr expr; 
@@ -32,23 +33,76 @@ public class IfStmt extends Stmt {
     }
 
 	public void execute() {
-		if (elsestmt == null) {
-			HashMap<String, AbstractValue> s0 = new HashMap<>(table.getOriginalState());
-			thenstmt.execute();
-			HashMap<String, AbstractValue> s1 = new HashMap<>(table.getOriginalState());
-			HashMap<String, AbstractValue> mergedState =  table.mergeStateWhile(s0, s1);
-			table.setOriginalState(mergedState);
+		// System.out.println("Test for CondExpr e :" + " " + expr.evaluate());
+
+		//if-then-else
+		if (elsestmt != null) {
+			if (expr.evaluate() == AbstractValue.True) { // Dead code detected in the else branch
+
+				Interpreter.fatalError("EXIT_DEAD_CODE: if cond evaluated to: " + expr.evaluate(), Interpreter.EXIT_DEAD_CODE);
+
+			} else if (expr.evaluate() == AbstractValue.False) {
+
+				Interpreter.fatalError("EXIT_DEAD_CODE: if cond evaluated to: " + expr.evaluate(), Interpreter.EXIT_DEAD_CODE);
+
+			} else {
+
+				HashMap<String, AbstractValue> s0 = new HashMap<>(table.getOriginalState());
+				thenstmt.execute();
+
+				HashMap<String, AbstractValue> s1 = new HashMap<>(table.getOriginalState());
+				table.setOriginalState(s0);
+				elsestmt.execute();
+
+				HashMap<String, AbstractValue> s2 = new HashMap<>(table.getOriginalState());
+
+				HashMap<String, AbstractValue> mergedState =  table.mergeStateWhile(s1, s2);
+
+				table.setOriginalState(mergedState);
+			}
 		} else {
-			HashMap<String, AbstractValue> s0 = new HashMap<>(table.getOriginalState());
-			thenstmt.execute();
-			HashMap<String, AbstractValue> s1 = new HashMap<>(table.getOriginalState());
-			
-			table.setOriginalState(s0);
-			elsestmt.execute();
-			HashMap<String, AbstractValue> s2 = new HashMap<>(table.getOriginalState());
-			HashMap<String, AbstractValue> mergedState =  table.mergeStateWhile(s1, s2);
-			table.setOriginalState(mergedState);
+			//if-then
+			if (expr.evaluate() == AbstractValue.False) {
+
+				Interpreter.fatalError("EXIT_DEAD_CODE: if cond evaluated to: " + expr.evaluate(), Interpreter.EXIT_DEAD_CODE);
+
+			} else if (expr.evaluate() == AbstractValue.True) {
+
+				thenstmt.execute();
+
+			} else {
+
+				HashMap<String, AbstractValue> s0 = new HashMap<>(table.getOriginalState());
+				
+				thenstmt.execute();
+
+				HashMap<String, AbstractValue> s1 = new HashMap<>(table.getOriginalState());
+
+				HashMap<String, AbstractValue> mergedState =  table.mergeStateWhile(s0, s1);
+
+				table.setOriginalState(mergedState);
+
+			}
 		}
+
+
+		// if (elsestmt == null) {
+		// 	HashMap<String, AbstractValue> s0 = new HashMap<>(table.getOriginalState());
+		// 	thenstmt.execute();
+		// 	HashMap<String, AbstractValue> s1 = new HashMap<>(table.getOriginalState());
+		// 	HashMap<String, AbstractValue> mergedState =  table.mergeStateWhile(s0, s1);
+		// 	table.setOriginalState(mergedState);
+		// } else {
+		// 	HashMap<String, AbstractValue> s0 = new HashMap<>(table.getOriginalState());
+		// 	thenstmt.execute();
+		// 	HashMap<String, AbstractValue> s1 = new HashMap<>(table.getOriginalState());
+			
+		// 	table.setOriginalState(s0);
+		// 	elsestmt.execute();
+		// 	HashMap<String, AbstractValue> s2 = new HashMap<>(table.getOriginalState());
+		// 	HashMap<String, AbstractValue> mergedState =  table.mergeStateWhile(s1, s2);
+		// 	table.setOriginalState(mergedState);
+		// }
 
     }
 }

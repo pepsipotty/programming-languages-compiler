@@ -6,5 +6,5 @@ public abstract class CondExpr extends ASTNode {
 	super(loc);
     }
 
-    public abstract boolean evaluate();
+    public abstract AbstractValue evaluate();
 }
