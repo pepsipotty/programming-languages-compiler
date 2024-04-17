@@ -37,16 +37,17 @@ public class IfStmt extends Stmt {
 
 		//if-then-else
 		if (elsestmt != null) {
+			// System.out.println(table.getOriginalState());
+			// System.out.println(expr.evaluate());
 			if (expr.evaluate() == AbstractValue.True) { // Dead code detected in the else branch
 
-				Interpreter.fatalError("EXIT_DEAD_CODE: if cond evaluated to: " + expr.evaluate(), Interpreter.EXIT_DEAD_CODE);
+				Interpreter.fatalError("EXIT_DEAD_CODE: If condition evaluated to: " + "TRUE", Interpreter.EXIT_DEAD_CODE);
 
 			} else if (expr.evaluate() == AbstractValue.False) {
 
-				Interpreter.fatalError("EXIT_DEAD_CODE: if cond evaluated to: " + expr.evaluate(), Interpreter.EXIT_DEAD_CODE);
+				Interpreter.fatalError("EXIT_DEAD_CODE: If condition evaluated to: " + "FALSE", Interpreter.EXIT_DEAD_CODE);
 
 			} else {
-
 				HashMap<String, AbstractValue> s0 = new HashMap<>(table.getOriginalState());
 				thenstmt.execute();
 
@@ -55,7 +56,6 @@ public class IfStmt extends Stmt {
 				elsestmt.execute();
 
 				HashMap<String, AbstractValue> s2 = new HashMap<>(table.getOriginalState());
-
 				HashMap<String, AbstractValue> mergedState =  table.mergeStateWhile(s1, s2);
 
 				table.setOriginalState(mergedState);
@@ -64,7 +64,7 @@ public class IfStmt extends Stmt {
 			//if-then
 			if (expr.evaluate() == AbstractValue.False) {
 
-				Interpreter.fatalError("EXIT_DEAD_CODE: if cond evaluated to: " + expr.evaluate(), Interpreter.EXIT_DEAD_CODE);
+				Interpreter.fatalError("EXIT_DEAD_CODE: If condition evaluated to: " + "FALSE", Interpreter.EXIT_DEAD_CODE);
 
 			} else if (expr.evaluate() == AbstractValue.True) {
 

@@ -1,0 +1,11 @@
+int pos = 1;
+int zero = 0;
+int neg = -1;
+int var;
+if (pos == neg || zero != zero) {
+    var = 1;
+} else {
+    var = -2;
+}
+
+print var;

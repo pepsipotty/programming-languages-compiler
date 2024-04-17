@@ -1,0 +1,1 @@
+int w = readint; int x; if (w < 0) { x=1; } else if (w < 10) { x=2; } else if (w < 20) { x=3; } print x;

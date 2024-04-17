@@ -1,0 +1,7 @@
+int w = 1; int z = 0;
+int x;
+if (w > z) {
+    x = 1;
+} else {
+    x = -1;
+}

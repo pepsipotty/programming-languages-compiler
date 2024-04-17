@@ -300,46 +300,46 @@ public class OperationMappings {
 
         // Mapping for GREATER THAN operation
         //Int
-        operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.NegInt, CompOperation.GE), AbstractValue.AnyBool);
-        operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.ZeroInt, CompOperation.GE), AbstractValue.False);
-        operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.PosInt, CompOperation.GE), AbstractValue.False);
-        operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.AnyInt, CompOperation.GE), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.NegInt, CompOperation.GT), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.ZeroInt, CompOperation.GT), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.PosInt, CompOperation.GT), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.NegInt, AbstractValue.AnyInt, CompOperation.GT), AbstractValue.AnyBool);
 
-        operationResults.put(new OperationKey(AbstractValue.ZeroInt, AbstractValue.NegInt, CompOperation.GE), AbstractValue.True);
-        operationResults.put(new OperationKey(AbstractValue.ZeroInt, AbstractValue.ZeroInt, CompOperation.GE), AbstractValue.False);
-        operationResults.put(new OperationKey(AbstractValue.ZeroInt, AbstractValue.PosInt, CompOperation.GE), AbstractValue.False);
-        operationResults.put(new OperationKey(AbstractValue.ZeroInt, AbstractValue.AnyInt, CompOperation.GE), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.ZeroInt, AbstractValue.NegInt, CompOperation.GT), AbstractValue.True);
+        operationResults.put(new OperationKey(AbstractValue.ZeroInt, AbstractValue.ZeroInt, CompOperation.GT), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.ZeroInt, AbstractValue.PosInt, CompOperation.GT), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.ZeroInt, AbstractValue.AnyInt, CompOperation.GT), AbstractValue.AnyBool);
 
-        operationResults.put(new OperationKey(AbstractValue.PosInt, AbstractValue.NegInt, CompOperation.GE), AbstractValue.True);
-        operationResults.put(new OperationKey(AbstractValue.PosInt, AbstractValue.ZeroInt, CompOperation.GE), AbstractValue.True);
-        operationResults.put(new OperationKey(AbstractValue.PosInt, AbstractValue.PosInt, CompOperation.GE), AbstractValue.AnyBool);
-        operationResults.put(new OperationKey(AbstractValue.PosInt, AbstractValue.AnyInt, CompOperation.GE), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.PosInt, AbstractValue.NegInt, CompOperation.GT), AbstractValue.True);
+        operationResults.put(new OperationKey(AbstractValue.PosInt, AbstractValue.ZeroInt, CompOperation.GT), AbstractValue.True);
+        operationResults.put(new OperationKey(AbstractValue.PosInt, AbstractValue.PosInt, CompOperation.GT), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.PosInt, AbstractValue.AnyInt, CompOperation.GT), AbstractValue.AnyBool);
 
-        operationResults.put(new OperationKey(AbstractValue.AnyInt, AbstractValue.NegInt, CompOperation.GE), AbstractValue.AnyBool);
-        operationResults.put(new OperationKey(AbstractValue.AnyInt, AbstractValue.ZeroInt, CompOperation.GE), AbstractValue.AnyBool);
-        operationResults.put(new OperationKey(AbstractValue.AnyInt, AbstractValue.PosInt, CompOperation.GE), AbstractValue.AnyBool);
-        operationResults.put(new OperationKey(AbstractValue.AnyInt, AbstractValue.AnyInt, CompOperation.GE), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.AnyInt, AbstractValue.NegInt, CompOperation.GT), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.AnyInt, AbstractValue.ZeroInt, CompOperation.GT), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.AnyInt, AbstractValue.PosInt, CompOperation.GT), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.AnyInt, AbstractValue.AnyInt, CompOperation.GT), AbstractValue.AnyBool);
 
         // FLT
-        operationResults.put(new OperationKey(AbstractValue.NegFloat, AbstractValue.NegFloat, CompOperation.GE), AbstractValue.AnyBool);
-        operationResults.put(new OperationKey(AbstractValue.NegFloat, AbstractValue.ZeroFloat, CompOperation.GE), AbstractValue.False);
-        operationResults.put(new OperationKey(AbstractValue.NegFloat, AbstractValue.PosFloat, CompOperation.GE), AbstractValue.False);
-        operationResults.put(new OperationKey(AbstractValue.NegFloat, AbstractValue.AnyFloat, CompOperation.GE), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.NegFloat, AbstractValue.NegFloat, CompOperation.GT), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.NegFloat, AbstractValue.ZeroFloat, CompOperation.GT), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.NegFloat, AbstractValue.PosFloat, CompOperation.GT), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.NegFloat, AbstractValue.AnyFloat, CompOperation.GT), AbstractValue.AnyBool);
 
-        operationResults.put(new OperationKey(AbstractValue.ZeroFloat, AbstractValue.NegFloat, CompOperation.GE), AbstractValue.True);
-        operationResults.put(new OperationKey(AbstractValue.ZeroFloat, AbstractValue.ZeroFloat, CompOperation.GE), AbstractValue.False);
-        operationResults.put(new OperationKey(AbstractValue.ZeroFloat, AbstractValue.PosFloat, CompOperation.GE), AbstractValue.False);
-        operationResults.put(new OperationKey(AbstractValue.ZeroFloat, AbstractValue.AnyFloat, CompOperation.GE), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.ZeroFloat, AbstractValue.NegFloat, CompOperation.GT), AbstractValue.True);
+        operationResults.put(new OperationKey(AbstractValue.ZeroFloat, AbstractValue.ZeroFloat, CompOperation.GT), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.ZeroFloat, AbstractValue.PosFloat, CompOperation.GT), AbstractValue.False);
+        operationResults.put(new OperationKey(AbstractValue.ZeroFloat, AbstractValue.AnyFloat, CompOperation.GT), AbstractValue.AnyBool);
 
-        operationResults.put(new OperationKey(AbstractValue.PosFloat, AbstractValue.NegFloat, CompOperation.GE), AbstractValue.True);
-        operationResults.put(new OperationKey(AbstractValue.PosFloat, AbstractValue.ZeroFloat, CompOperation.GE), AbstractValue.True);
-        operationResults.put(new OperationKey(AbstractValue.PosFloat, AbstractValue.PosFloat, CompOperation.GE), AbstractValue.AnyBool);
-        operationResults.put(new OperationKey(AbstractValue.PosFloat, AbstractValue.AnyFloat, CompOperation.GE), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.PosFloat, AbstractValue.NegFloat, CompOperation.GT), AbstractValue.True);
+        operationResults.put(new OperationKey(AbstractValue.PosFloat, AbstractValue.ZeroFloat, CompOperation.GT), AbstractValue.True);
+        operationResults.put(new OperationKey(AbstractValue.PosFloat, AbstractValue.PosFloat, CompOperation.GT), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.PosFloat, AbstractValue.AnyFloat, CompOperation.GT), AbstractValue.AnyBool);
 
-        operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.NegFloat, CompOperation.GE), AbstractValue.AnyBool);
-        operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.ZeroFloat, CompOperation.GE), AbstractValue.AnyBool);
-        operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.PosFloat, CompOperation.GE), AbstractValue.AnyBool);
-        operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.AnyFloat, CompOperation.GE), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.NegFloat, CompOperation.GT), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.ZeroFloat, CompOperation.GT), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.PosFloat, CompOperation.GT), AbstractValue.AnyBool);
+        operationResults.put(new OperationKey(AbstractValue.AnyFloat, AbstractValue.AnyFloat, CompOperation.GT), AbstractValue.AnyBool);
 
         // Mapping for LESS THAN OR EQUAL TO operation
         // Int
@@ -558,13 +558,14 @@ public class OperationMappings {
 
     public static AbstractValue getResult(AbstractValue left, AbstractValue right, BinaryOperation operation) {
         return operationResults.getOrDefault(new OperationKey(left, right, operation), AbstractValue.AnyInt);
+
     }
 
     public static AbstractValue getResult(AbstractValue left, AbstractValue right, CompOperation operation) {
-        return operationResults.getOrDefault(new OperationKey(left, right, operation), AbstractValue.AnyInt);
+        return operationResults.getOrDefault(new OperationKey(left, right, operation), AbstractValue.AnyBool);
     }
 
     public static AbstractValue getResult(AbstractValue left, AbstractValue right, LogicalOperation operation) {
-        return operationResults.getOrDefault(new OperationKey(left, right, operation), AbstractValue.AnyInt); 
+        return operationResults.getOrDefault(new OperationKey(left, right, operation), AbstractValue.AnyBool); 
     }
 }
